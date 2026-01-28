@@ -7,7 +7,7 @@
         <div class="media-column width-6 window-height background-none">
             <div class="tm-slider-container content-slider window-height" data-animation="slide" data-nav-arrows="false"
                 data-auto-advance data-auto-advance-interval="4000" data-progress-bar="false" data-speed="1000"
-                data-scale-under="0" data-width="722">
+                data-scale-under="0" data-width="722">s
                 <ul class="tms-slides">
                     <li class="tms-slide" data-image data-as-bkg-image data-force-fit data-as-bkg-image
                         data-overlay-bkg-color="#000000" data-overlay-bkg-opacity="0.0" data-animation="scaleOut">
@@ -127,9 +127,9 @@
     <!-- Logo Slider -->
 
     @include('partials.logoSlider')
-  
+
     <!-- Logo Slider End -->
 
     @include('partials.footer')
-    
+
 @endsection
