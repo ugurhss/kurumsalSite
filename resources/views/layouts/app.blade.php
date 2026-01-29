@@ -7,8 +7,7 @@
     
    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/core.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/skin-architecture.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}" />
 </head>
 <body class="@yield('body_class', 'shop home-page')">
     @include('partials.side-nav')

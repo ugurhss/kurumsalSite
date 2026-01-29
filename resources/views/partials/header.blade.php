@@ -1,71 +1,37 @@
-<!-- Header -->
-<header class="header header-fixed header-fixed-on-mobile" data-bkg-threshold="100">
-    <div class="header-inner">
-        <div class="row nav-bar">
-            <div class="column width-12 nav-bar-inner">
-                <div class="logo">
-                    <div class="logo-inner">
-                        <a href="index.asp"><img src="{{ asset('images/logo.jpg') }}"
-                                alt="Göksu Logo" /></a>
-                        <a href="index.asp"><img src="{{ asset('images/logo.jpg') }}" alt="Göksu Logo" /></a>
-                    </div>
-                </div>
-                <nav class="navigation nav-block secondary-navigation nav-right">
-                    <ul>
-                        <li class="aux-navigation hide">
-                            <a href="#" class="navigation-show side-nav-show nav-icon">
-                                <span class="icon-menu"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="navigation nav-block primary-navigation nav-right no-margin-right">
-                    <ul>
-                        <li class="current">
-                            <a href="" class="">Anasayfa</a>
-                        </li>
-                        <li>
-                            <a href="" class="">Kurumsal</a>
-                        </li>
-                        <li>
-                            <a href="" class="">ÜRETİM</a>
-                        </li>
-                        <li>
-                            <a href="">Ürünler</a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="">Islak Mendil</a>
-                                </li>
-                                <li>
-                                    <a href="">Laminasyon Ürünler</a>
-                                </li>
-                                <li>
-                                    <a href="">PE Kaplı Kağıtlar</a>
-                                </li>
-                                <li>
-                                    <a href="">Toz ve Sıvı Dolum</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="" class="">Referanslar</a>
-                        </li>
-                        <li>
-                            <a href="  " class="">İnsan Kaynakları</a>
-                        </li>
-                        <li>
-                            <a href="" class="">İLETİŞİM</a>
-                        </li>
-                        <li>
-                            <!-- <a href="l"><img src="{{ asset('tr.jpg') }}" alt="Türkçe"></a> -->
-                        </li>
-                        <li>
-                            <!-- <a href=""><img src="{{ asset('en.jpg') }}" alt="English"></a> -->
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<header class="navbar">
+  <div class="navbar-container">
+    <!-- Left: Logo -->
+    <div class="nav-left">
+      <a href="/" class="navbar-logo">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Göksu Kağıt Logo" class="logo-img">
+      </a>
     </div>
+
+    <!-- Center: Main navigation (desktop) / collapsible (mobile) -->
+    <nav class="nav-center navbar-menu" id="navbarMenu">
+      <ul class="navbar-list">
+        <li><a href="/" class="navbar-link">Anasayfa</a></li>
+        <li><a href="#about" class="navbar-link">Hakkımızda</a></li>
+        <li><a href="#products" class="navbar-link">Ürünler</a></li>
+        <li><a href="#references" class="navbar-link">Referanslar</a></li>
+        <li><a href="#contact" class="navbar-link">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right: Action buttons + mobile toggle -->
+    <div class="nav-right">
+      <a href="/quote" class="btn btn-primary">Teklif Oluştur</a>
+      <a href="/supplier" class="btn btn-outline">Tedarikçi Başvurusu</a>
+
+      <div class="navbar-toggle" id="navbarToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
 </header>
-<!-- Header End -->
+
+
+
+

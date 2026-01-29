@@ -1,43 +1,60 @@
-<!-- Footer -->
-<footer class="footer" style="background: linear-gradient(white, #c0c0c0);border-top:1px solid #b2b2b2;">
-    <div class="footer-top" style="padding:0px;padding-top:30px;border-bottom:1px solid #d4444a;">
-        <div class="row flex">
-            <div class="column width-4">
-                <div class="widget">
-                    <h4 class="widget-title"><img src="{{ asset('images/architecture/logo.png') }}" alt="Göksu Logo" />
-                    </h4>
-                </div>
-            </div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Company Info -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ asset('images/logo.jpg') }}" alt="Göksu Kağıt" class="logo-footer">
+          <h3>Göksu Kağıt</h3>
+        </div>
+        <p>Avrupa'nın en büyük ıslak mendil üreticisi. 1980'den beri kalite ve güvenilirliğin sembolü.</p>
+      </div>
 
-            <div class="column width-3 offset-1">
-                <div class="widget">
-                    <address>
-                        İkitelli OSB. Atatürk Bulvarı, 10. Cad. No:4 <br>
-                        34490 Başakşehir – İstanbul / TÜRKİYE<br>
-                    </address>
-                </div>
-            </div>
-            <div class="column width-3 offset-1">
-                <div class="widget">
-                    <address>
-                        <strong>T:</strong> <a href="tel:+902125498120">+90 (212) 549 8120 (4 hat)</a><br>
-                        <strong>E:</strong> <a href="mailto:goksu@goksu.com.tr">goksu@goksu.com.tr</a>
-                    </address>
-                </div>
-            </div>
-        </div>
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#products">Ürünler</a></li>
+          <li><a href="#contact">İletişim</a></li>
+          <li><a href="#">Kariyer</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-section">
+        <h4>Yasal</h4>
+        <ul>
+          <li><a href="#">Gizlilik Politikası</a></li>
+          <li><a href="#">Kullanım Şartları</a></li>
+          <li><a href="#">Çerez Politikası</a></li>
+          <li><a href="#">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>İletişim Bilgileri</h4>
+        <p class="contact-item">
+          <strong>Adres:</strong><br>
+          İstanbul, Türkiye
+        </p>
+        <p class="contact-item">
+          <strong>Telefon:</strong><br>
+          +90 (212) 123 45 67
+        </p>
+        <p class="contact-item">
+          <strong>Email:</strong><br>
+          info@goksukagit.com
+        </p>
+      </div>
     </div>
-    <br>
+
+    <!-- Footer Bottom -->
     <div class="footer-bottom">
-        <div class="row">
-            <div class="column width-12">
-                <p class="copyright">
-                    &copy; 2021. All Rights Reserved - <strong>Göksu Kağıt San. Tic. Ltd. Şti.</strong>
-                    | <a href="{{ asset('aydinlatma-metni.pdf') }}" target="_blank">Aydınlatma Metni</a>
-                </p>
-                <a href="http://www.rexa.com.tr" target="_blank"><img src="{{ asset('rexa.png') }}" align="right"></a>
-            </div>
-        </div>
+      <p>&copy; 2026 Göksu Kağıt. Tüm hakları saklıdır.</p>
     </div>
+  </div>
 </footer>
-<!-- Footer End -->
+
+<!-- Footer CSS moved to public/css/style.min.css -->
