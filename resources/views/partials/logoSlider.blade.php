@@ -1,431 +1,269 @@
-  <div class="section-block pt-10 pb-10">
-        <div class="row">
-            <div class="column width-12">
-                <div class="tm-slider-container logo-slider pb-30" data-nav-dark data-nav-keyboard="false" data-auto-advance
-                    data-auto-advance-interval="2000" data-progress-bar="true" data-pause-on-hover="false"
-                    data-carousel-visible-slides="5">
-                    <ul class="tms-slides">
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/thy.jpg"><img data-src="images/galeri/20171224_91_105401874.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
+<div class="product-cards-wrapper">
 
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/pegasus.jpg"><img data-src="images/galeri/20171224_90_457422138.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/atlasglobal.jpg"><img
-                                        data-src="images/galeri/20171224_89_2135278583.jpg" src="images/blank.png"
-                                        alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/onurair.jpg"><img data-src="images/galeri/20171224_88_7079431414.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/airfrance.jpg"><img data-src="images/galeri/20171224_87_2038995624.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/anadolujet.jpg"><img
-                                        data-src="images/galeri/20171224_86_4738275409.jpg" src="images/blank.png"
-                                        alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/czac.jpg"><img data-src="images/galeri/20171224_85_8649103045.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/lsg.jpg"><img data-src="images/galeri/20171224_84_745050312.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/garanti.jpg"><img data-src="images/galeri/20171224_83_6087457538.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/maximum.jpg"><img data-src="images/galeri/20171224_82_423089862.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/akbank.jpg"><img data-src="images/galeri/20171224_81_6199457049.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/halkbank.jpg"><img data-src="images/galeri/20171224_80_8115655780.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/world.jpg"><img data-src="images/galeri/20171224_80_6146356463.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/denizbank.jpg"><img data-src="images/galeri/20171224_78_4344903827.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/ingbank.jpg"><img data-src="images/galeri/20171224_77_8009454608.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/ulker.jpg"><img data-src="images/galeri/20171224_76_8327752947.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/kfc.jpg"><img data-src="images/galeri/20171224_75_1860467792.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/sanovel.jpg"><img data-src="images/galeri/20171224_74_1463739276.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/mado.jpg"><img data-src="images/galeri/20171224_73_1213495136.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/abdiibrahim.jpg"><img
-                                        data-src="images/galeri/20171224_73_6483880877.jpg" src="images/blank.png"
-                                        alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/pelit.jpg"><img data-src="images/galeri/20171224_71_4762384295.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/popeyes.jpg"><img data-src="images/galeri/20171224_70_2433587909.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/pizzahut.jpg"><img data-src="images/galeri/20171224_69_581476093.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/dominos.jpg"><img data-src="images/galeri/20171224_68_4473688006.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/stregis.jpg"><img data-src="images/galeri/20171224_67_3332635760.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/mars.jpg"><img data-src="images/galeri/20181031_108_5597802997.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/rixos.jpg"><img data-src="images/galeri/20171224_65_6955987811.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/aksa.jpg"><img data-src="images/galeri/20171224_64_4689752460.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/pinar.jpg"><img data-src="images/galeri/20171224_63_9001275897.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/tbmm.jpg"><img data-src="images/galeri/20171224_62_1482049823.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/kopas.jpg"><img data-src="images/galeri/20171224_61_934869647.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/divan.jpg"><img data-src="images/galeri/20171224_60_2612726093.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/sbarro.jpg"><img data-src="images/galeri/20171224_59_4501611590.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/dream.jpg"><img data-src="images/galeri/20171224_58_512353778.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/deva.jpg"><img data-src="images/galeri/20171224_57_1793481708.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/sutas.jpg"><img data-src="images/galeri/20171224_56_472680927.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/aris.jpg"><img data-src="images/galeri/20171224_55_5889551043.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/gunaydin.jpg"><img data-src="images/galeri/20171224_54_8160058856.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/dardenia.jpg"><img data-src="images/galeri/20171224_53_5788843036.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/sushico.jpg"><img data-src="images/galeri/20171224_52_1740991474.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/eker.jpg"><img data-src="images/galeri/20171224_51_4665185809.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/bilimilac.jpg"><img data-src="images/galeri/20171224_50_7752496600.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/komagene.jpg"><img data-src="images/galeri/20171224_48_8677636981.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/erkanusta.jpg"><img data-src="images/galeri/20171224_47_6713067889.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/kasapdoner.jpg"><img data-src="images/galeri/20180118_92_165674091.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/bereketdoner.jpg"><img
-                                        data-src="images/galeri/20171224_45_3782007098.jpg" src="images/blank.png"
-                                        alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/omerusta.jpg"><img data-src="images/galeri/20171224_44_8518640399.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/ziyafet.jpg"><img data-src="images/galeri/20171224_43_260583759.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/cookshop.jpg"><img data-src="images/galeri/20171224_42_1488305927.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/patos.jpg"><img data-src="images/galeri/20171224_41_3613550067.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/alacati.jpg"><img data-src="images/galeri/20171224_41_1918298602.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-
-                        <li class="tms-slide">
-                            <div class="tms-content-scalable" style="border:1px solid #ededed;">
-                                <a class="overlay-link lightbox-link" data-group="product-lightbox-gallery"
-                                    href="images/galeri/adiyamanli.jpg"><img data-src="images/galeri/20171224_40_659295917.jpg"
-                                        src="images/blank.png" alt="" /></a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <div class="product-card">
+    <div class="product-overflow">
+      <div class="product-model">
+        <model-viewer src="https://assets.codepen.io/3421562/leaves_keyboard.glb"
+                      shadow-intensity="0.4"></model-viewer>
+      </div>
     </div>
+
+    <div class="product-glass">
+      <div class="product-gradient-blur">
+        <div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  <div class="product-card">
+    <div class="product-overflow">
+      <div class="product-model">
+        <model-viewer src="https://assets.codepen.io/3421562/topo_keyboard.glb"
+                      shadow-intensity="0.4"></model-viewer>
+      </div>
+    </div>
+
+    <div class="product-glass">
+      <div class="product-gradient-blur">
+        <div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  <div class="product-card">
+    <div class="product-overflow">
+      <div class="product-model">
+        <model-viewer src="https://assets.codepen.io/3421562/panda_keyboard.glb"
+                      shadow-intensity="0.4"></model-viewer>
+      </div>
+    </div>
+
+    <div class="product-glass">
+      <div class="product-gradient-blur">
+        <div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+
+   
+  </div>
+
+</div>
+
+<div class="logo-marquee-wrapper">
+
+  <!-- Fade efektleri -->
+  <div class="logo-marquee-fade logo-marquee-fade-left"></div>
+  <div class="logo-marquee-fade logo-marquee-fade-right"></div>
+
+  <!-- Slider -->
+  <div class="logo-marquee-track">
+
+    <div class="logo-marquee-group">
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/fiverr-2.svg" alt="Fiverr"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/amlin-1.svg" alt="Amlin"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/enkei-wheels-1.svg" alt="Enkei"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/hoyer.svg" alt="Hoyer"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/meritrust-credit-union.svg" alt="Meritrust"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/general-electric.svg" alt="GE"></div>
+    </div>
+
+    <div class="logo-marquee-group">
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/fiverr-2.svg" alt="Fiverr"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/amlin-1.svg" alt="Amlin"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/enkei-wheels-1.svg" alt="Enkei"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/hoyer.svg" alt="Hoyer"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/meritrust-credit-union.svg" alt="Meritrust"></div>
+      <div class="logo-marquee-item"><img src="https://cdn.worldvectorlogo.com/logos/general-electric.svg" alt="GE"></div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+
+.product-cards-wrapper,
+.logo-marquee-wrapper {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* --- Logo marquee --- */
+.logo-marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 0;
+  margin: 0 !important;
+}
+
+.logo-marquee-fade {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.logo-marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #fff, transparent); /* 🔧 daha temiz */
+}
+
+.logo-marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #fff, transparent);  /* 🔧 daha temiz */
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logoMarqueeScroll 20s linear infinite;
+}
+
+.logo-marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-marquee-item {
+  width: 128px;
+  height: 64px;
+  margin: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-marquee-item img {
+  max-height: 48px;
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.logo-marquee-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@keyframes logoMarqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .logo-marquee-item { width: 100px; margin: 0 16px; }
+  .logo-marquee-fade { width: 40px; }
+}
+
+/* --- Product cards --- */
+.product-cards-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 0;
+  margin: 0 !important;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  --clr:#7da072;
+  --fclr:#f0ffe2;
+  width: 260px;
+  height: 360px;
+  background: var(--clr);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+.product-card:nth-child(2){ --clr:#2e2e2e; --fclr:#fff; }
+.product-card:nth-child(3){ --clr:#fff; --fclr:#000; }
+
+.product-content {
+  padding: 16px;
+  color: var(--fclr);
+  z-index: 2;
+}
+
+.product-content h2 { margin: 0 0 6px; font-size: 20px; }
+.product-content p { font-size: 13px; opacity: .85; }
+
+.product-glass {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 70%;
+  background: linear-gradient(transparent, var(--clr));
+  border-radius: 0 0 10px 10px;
+}
+
+.product-overflow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.product-model {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-model model-viewer {
+  width: 360px;
+  height: 360px;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+
+.product-model model-viewer.loaded {
+  opacity: 1;
+}
+</style>
+
+<script>
+(() => {
+  const cards = document.querySelectorAll(".product-card");
+
+  const defaultOrbit = "64deg 25deg 64m";
+  const hoverOrbit   = "90deg -42deg 50m";
+  const defaultTarget = "8m 1m 1m";
+  const hoverTarget   = "4m 1m 1m";
+
+  const apply = (mv, orbit, target) => {
+    mv.setAttribute("camera-orbit", orbit);
+    mv.setAttribute("camera-target", target);
+    mv.setAttribute("interpolation-decay", "124");
+  };
+
+  cards.forEach(card => {
+    const mv = card.querySelector("model-viewer");
+    if (!mv) return;
+
+    apply(mv, defaultOrbit, defaultTarget);
+
+    card.addEventListener("mouseenter", () => apply(mv, hoverOrbit, hoverTarget));
+    card.addEventListener("mouseleave", () => apply(mv, defaultOrbit, defaultTarget));
+
+    mv.addEventListener("load", () => mv.classList.add("loaded"));
+  });
+})();
+</script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+ 

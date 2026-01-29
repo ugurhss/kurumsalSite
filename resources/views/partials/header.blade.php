@@ -5,9 +5,9 @@
             <div class="column width-12 nav-bar-inner">
                 <div class="logo">
                     <div class="logo-inner">
-                        <a href="index.asp"><img src="{{ asset('images/architecture/logo-dark.png') }}"
+                        <a href="index.asp"><img src="{{ asset('images/logo.jpg') }}"
                                 alt="Göksu Logo" /></a>
-                        <a href="index.asp"><img src="{{ asset('images/architecture/logo.png') }}" alt="Göksu Logo" /></a>
+                        <a href="index.asp"><img src="{{ asset('images/logo.jpg') }}" alt="Göksu Logo" /></a>
                     </div>
                 </div>
                 <nav class="navigation nav-block secondary-navigation nav-right">
@@ -22,45 +22,45 @@
                 <nav class="navigation nav-block primary-navigation nav-right no-margin-right">
                     <ul>
                         <li class="current">
-                            <a href="index.asp" class="">Anasayfa</a>
+                            <a href="" class="">Anasayfa</a>
                         </li>
                         <li>
-                            <a href="kurumsal.asp" class="">Kurumsal</a>
+                            <a href="" class="">Kurumsal</a>
                         </li>
                         <li>
-                            <a href="uretim.asp" class="">ÜRETİM</a>
+                            <a href="" class="">ÜRETİM</a>
                         </li>
                         <li>
-                            <a href="islak-mendil.asp">Ürünler</a>
+                            <a href="">Ürünler</a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="islak-mendil.asp">Islak Mendil</a>
+                                    <a href="">Islak Mendil</a>
                                 </li>
                                 <li>
-                                    <a href="laminasyon-urunler.asp">Laminasyon Ürünler</a>
+                                    <a href="">Laminasyon Ürünler</a>
                                 </li>
                                 <li>
-                                    <a href="pe-kapli-kagitlar.asp">PE Kaplı Kağıtlar</a>
+                                    <a href="">PE Kaplı Kağıtlar</a>
                                 </li>
                                 <li>
-                                    <a href="toz-dolum.asp">Toz ve Sıvı Dolum</a>
+                                    <a href="">Toz ve Sıvı Dolum</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="referanslar.asp" class="">Referanslar</a>
+                            <a href="" class="">Referanslar</a>
                         </li>
                         <li>
-                            <a href="ik.asp" class="">İnsan Kaynakları</a>
+                            <a href="  " class="">İnsan Kaynakları</a>
                         </li>
                         <li>
-                            <a href="iletisim.asp" class="">İLETİŞİM</a>
+                            <a href="" class="">İLETİŞİM</a>
                         </li>
                         <li>
-                            <a href="index.asp"><img src="{{ asset('tr.jpg') }}" alt="Türkçe"></a>
+                            <!-- <a href="l"><img src="{{ asset('tr.jpg') }}" alt="Türkçe"></a> -->
                         </li>
                         <li>
-                            <a href="home.asp"><img src="{{ asset('en.jpg') }}" alt="English"></a>
+                            <!-- <a href=""><img src="{{ asset('en.jpg') }}" alt="English"></a> -->
                         </li>
                     </ul>
                 </nav>
