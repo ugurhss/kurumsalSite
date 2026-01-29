@@ -109,7 +109,71 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.remove('active');
       });
     });
+
+
+    
   }
 });
 
+// Generic staggered entrance helper for multiple pages (logos, products, etc.)
+(function(){
+  function runStagger(selector, step = 80){
+    const nodes = Array.from(document.querySelectorAll(selector));
+    if (!nodes.length) return;
 
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      nodes.forEach(n => n.classList.add('visible'));
+      return;
+    }
+
+    nodes.forEach((el, i) => {
+      el.style.transitionDelay = (i * step / 1000) + 's';
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+    });
+  }
+
+  function initAll(){
+    runStagger('.logo-card', 80);
+    runStagger('.product-tile', 80);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+})();
+
+// Product Detail page: carousel and thumbnail management
+document.addEventListener('DOMContentLoaded', function(){
+  // Thumbnail carousel in product detail
+  const thumbs = document.querySelectorAll('.carousel-thumbs .thumb');
+  const mainImage = document.getElementById('mainImage');
+  
+  if (thumbs.length && mainImage) {
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', function(){
+        thumbs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        mainImage.src = this.dataset.full;
+      });
+    });
+  }
+
+  // Horizontal carousel controls for related products
+  const relatedCarousel = document.getElementById('relatedCarousel');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  
+  if (relatedCarousel && prevBtn && nextBtn) {
+    const scrollAmount = 280; // card width + gap
+    
+    nextBtn.addEventListener('click', function(){
+      relatedCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    prevBtn.addEventListener('click', function(){
+      relatedCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+  }
+});
