@@ -47,14 +47,14 @@
       <div class="references-logos-grid" aria-live="polite">
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/visa-6.svg" alt="Visa"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/amex-2.svg" alt="American Express"></div>
+        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/general-electric.svg" alt="General Electric"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/siemens-2.svg" alt="Siemens"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/3m-1.svg" alt="3M"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/dhl-2.svg" alt="DHL"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/fedex-2.svg" alt="FedEx"></div>
+        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
+        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/uber-2.svg" alt="Uber"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/airbnb-3.svg" alt="Airbnb"></div>
+        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/spotify-2.svg" alt="Spotify"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"></div>
         <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/samsung-3.svg" alt="Samsung"></div>
