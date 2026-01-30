@@ -14,14 +14,13 @@ Route::get('/about', function () {
 
 });
 Route::get('/reference', [FrontendController::class, 'reference'])->name('reference');
+Route::get('/products', [FrontendController::class, 'products'])->name('products');
+
+Route::get('/products3d/{id}', [FrontendController::class, 'show'])
+    ->name('products3d.show');
 
 
-Route::get('/products', function () {
-    return view('products');
-});
-Route::get('/product/{slug}', function ($slug) {
-    return view('productsDetail');
-});
+
 
 
 Route::prefix('admin')->name('admin.')->group(function () {

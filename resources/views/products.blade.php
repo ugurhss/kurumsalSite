@@ -41,62 +41,34 @@
       Hijyen, kalite ve markanıza özel çözümler sunan geniş ürün yelpazemiz.
     </p>
 
-    <div class="products-grid" aria-live="polite">
+  <div class="products-grid" aria-live="polite">
 
-      <!-- Islak Mendil -->
-      <article class="product-tile">
-        <img src="https://productimages.hepsiburada.net/s/777/375-375/110001032724657.jpg" alt="Islak Mendil" class="product-img">
-        <h3>Islak Mendil</h3>
-        <p>
-          Hijyenik ve pratik tek kullanımlık ıslak mendillerimiz, yüksek kalite
-          standartları esas alınarak modern üretim tesislerimizde titizlikle üretilmektedir.
-          Yüksek üretim kapasitemiz sayesinde hızlı ve sürdürülebilir çözümler sunarken;
-          koku, içerik ve ambalaj tasarımı gibi detaylar tamamen size özel olarak
-          şekillendirilebilmektedir.
-        </p>
-        <a class="btn btn-outline" href="/products/wet-wipes">Detay</a>
-      </article>
+  @foreach($products3d as $product)
+  <article class="product-tile">
 
-      <!-- Plastik İkram Setleri -->
-      <article class="product-tile">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHEtXr2oJO7mlk3k6w8ii-7D1yhxlFqSgLrQ&s" alt="Plastik İkram Setleri" class="product-img">
-        <h3>Plastik İkram Setleri</h3>
-        <p>
-          İhtiyaçlarınıza ve kullanım alanlarınıza göre şekillendirilebilen ikram setlerimiz,
-          tam otomatik üretim hatlarında, el değmeden ve yüksek hijyen standartlarına uygun
-          şekilde üretilmektedir. Gıda güvenliği mevzuatlarına uygun üretim süreçlerimizle,
-          farklı sektörlere hitap eden pratik ve şık ikram çözümleri sunuyoruz.
-        </p>
-        <a class="btn btn-outline" href="/products/ikram-setleri">Detay</a>
-      </article>
-
-      <!-- Stick Şeker -->
-      <article class="product-tile">
-        <img src="https://api.bidolubaski.com/sites/default/files/styles/product_page_w580/public/product-image/2018-09/baskili_stick_seker_bidolubaski.jpg?itok=rb3ZHVXD" alt="Stick Şeker" class="product-img">
-        <h3>Stick Şeker</h3>
-        <p>
-          Küçük bir stick, büyük bir marka etkisi. Doğal şeker pancarından üretilen,
-          dengeli lezzete sahip stick şekerlerimiz; logonuz, mesajınız ve tasarımınızla
-          tamamen size özel olarak üretilebilir. Markanızı her sunumda görünür kılan
-          etkili ve ekonomik bir tanıtım aracıdır.
-        </p>
-        <a class="btn btn-outline" href="/products/stick-seker">Detay</a>
-      </article>
-
-      <!-- Çatal Kaşık Bıçak Zarfları -->
-      <article class="product-tile">
-        <img src="https://s.alicdn.com/@sc04/kf/H668a3f7897444f938746ac47fb4269f4K/Custom-Kraft-Paper-Envelope-Packaging-Kraft-Envelope-Packaging-Packaging-Envelope-for-Cutlery-Knives-Forks-Spoons.jpg_300x300.jpg" alt="Çatal Kaşık Bıçak Zarfları" class="product-img">
-        <h3>Çatal · Kaşık · Bıçak Zarfları</h3>
-        <p>
-          Gıda ile temasa uygun, çevre dostu ve geri dönüştürülebilir kâğıtlardan üretilen
-          tek kullanımlık zarflarımız; metal servis ürünlerini dış etkenlerden koruyarak
-          hijyen sağlar. İsteğe bağlı baskı seçenekleriyle logonuzu ve marka mesajınızı
-          taşıyarak hijyeni güçlü bir iletişim aracına dönüştürür.
-        </p>
-        <a class="btn btn-outline" href="/products/cutlery-envelopes">Detay</a>
-      </article>
-
+    <div class="product-img" style="padding:0; background:transparent;">
+      <model-viewer
+        src="{{ asset('storage/'.$product->model_path) }}"
+        shadow-intensity="0.4"
+        camera-controls
+        auto-rotate
+        style="width:100%; height:260px; display:block;">
+      </model-viewer>
     </div>
+
+    <h3>{{ $product->title ?? '3D Ürün' }}</h3>
+
+    <!-- @if(!empty($product->description))
+      <p>{{ $product->description }}</p>
+    @endif -->
+
+<a class="btn btn-outline" href="{{ route('products3d.show', $product->id) }}">Detay</a>
+
+  </article>
+  @endforeach
+
+</div>
+
   </div>
 </section>
 

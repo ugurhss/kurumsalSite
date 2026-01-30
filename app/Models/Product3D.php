@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Product3D extends Model
 {
@@ -10,19 +12,56 @@ class Product3D extends Model
 
     protected $fillable = [
         'title',
+        'slug',
+        'short_description',
+        'description',
         'model_path',
+        'images',
+        'specs',
+        'price_note',
+        'quote_url',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'images'    => 'array',
+        'specs'     => 'array',
     ];
 
-    /**
-     * Frontend için model URL
-     */
-    public function getModelUrlAttribute(): string
+   
+    public function getModelUrlAttribute(): ?string
     {
-        return asset('storage/' . $this->model_path);
+        return $this->model_path
+            ? Storage::disk('public')->url($this->model_path)
+            : null;
+    }
+
+    public function getImagesUrlsAttribute(): array
+    {
+        if (empty($this->images) || !is_array($this->images)) {
+            return [];
+        }
+
+        return collect($this->images)
+            ->map(fn ($path) => Storage::disk('public')->url($path))
+            ->values()
+            ->toArray();
+    }
+
+   
+    public function setTitleAttribute(string $value): void
+    {
+        $this->attributes['title'] = $value;
+
+        if (empty($this->attributes['slug'])) {
+            $this->attributes['slug'] = Str::slug($value);
+        }
+    }
+
+  
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
     }
 }

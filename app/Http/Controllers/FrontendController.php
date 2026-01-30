@@ -39,4 +39,23 @@ class FrontendController extends Controller
 
         return view('references', compact('logos'));
     }
+
+  public function products()
+{
+    $products3d = $this->product3DService
+        ->list(['is_active' => true], [], 100)
+        ->values();
+
+    return view('products', compact('products3d'));
+}
+
+
+ public function show(int $id)
+    {
+        $product = $this->product3DService->get($id);
+
+        abort_if(!$product || !$product->is_active, 404);
+
+        return view('productsDetail', compact('product'));
+    }
 }

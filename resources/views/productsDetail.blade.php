@@ -14,61 +14,112 @@
 <section class="product-detail-main">
   <div class="container-product">
     <div class="detail-grid">
-      
+
       <!-- Left: Description -->
       <div class="detail-left">
         <h2>Ürün Açıklaması</h2>
-        
+
         <div class="detail-specs">
           <h3>Özellikler</h3>
           <ul>
-            <li><strong>Malzeme:</strong> 100% Pamuk Blends</li>
-            <li><strong>Boyutlar:</strong> 20x20 cm, 25x25 cm</li>
-            <li><strong>Paket Seçenekleri:</strong> 10, 20, 50, 100 adet</li>
-            <li><strong>Sahip Olduğu Nitelikler:</strong> Hypoallergenic, Eco-Friendly</li>
-            <li><strong>Depolama:</strong> Oda sıcaklığında, nemli ortamdan uzak</li>
+            @php
+              $specs = is_array($product->specs ?? null) ? $product->specs : [];
+            @endphp
+
+            @forelse($specs as $key => $value)
+              <li>
+                <strong>{{ $key }}:</strong>
+                @if(is_array($value))
+                  {{ json_encode($value, JSON_UNESCAPED_UNICODE) }}
+                @else
+                  {{ $value }}
+                @endif
+              </li>
+            @empty
+              <li><strong>Bilgi:</strong> Özellik bilgisi eklenmemiş.</li>
+            @endforelse
           </ul>
         </div>
 
         <div class="detail-description">
           <h3>Detaylı Bilgi</h3>
-          <p>
-            Göksu Kağıt Premium Islak Mendilleri, üst düzey kalitede hammaddeler kullanılarak üretilmektedir. 
-            Yumuşak yapısı sayesinde hassas ciltler için de uygundur. Her bir mendil sıkı kalite kontrol süzgecinden 
-            geçerek müşteriye ulaşır.
-          </p>
-          <p>
-            Ürün, endüstriyel ve kişisel kullanım için ideal çözümlerdir. Antibakteriyel özellikleri sayesinde 
-            hijyen ve temizlikte güvenilir bir seçimdir.
-          </p>
+
+          @if(!empty($product->description))
+            {{-- description içinde satır satır yazmak istersen --}}
+            {!! nl2br(e($product->description)) !!}
+          @else
+            <p>Bu ürün için detaylı açıklama eklenmemiş.</p>
+          @endif
         </div>
 
         <div class="detail-price">
           <h3>Fiyat Bilgisi</h3>
-          <p class="price-note">Fiyatlandırma adet ve sipariş büyüklüğüne göre değişir.</p>
-          <a href="/quote" class="btn btn-primary">Fiyat Teklifi Al</a>
+          <p class="price-note">
+            {{ $product->price_note ?: 'Fiyatlandırma adet ve sipariş büyüklüğüne göre değişir.' }}
+          </p>
+
+          @if(!empty($product->quote_url))
+            <a href="{{ $product->quote_url }}" class="btn btn-primary">Fiyat Teklifi Al</a>
+          @else
+            <a href="/quote" class="btn btn-primary">Fiyat Teklifi Al</a>
+          @endif
         </div>
       </div>
 
       <!-- Right: Carousel -->
       <div class="detail-right">
+
+        {{-- 3D model (tasarımı bozmadan, carousel üstünde) --}}
+        @if(!empty($product->model_url))
+          <div style="margin-bottom:14px;">
+            <model-viewer
+              src="{{ asset('storage/'.$product->model_path) }}"
+              shadow-intensity="0.4"
+              camera-controls
+              auto-rotate
+              style="width:100%; height:260px; display:block;">
+            </model-viewer>
+          </div>
+        @endif
+
         <div class="product-carousel">
           <div class="carousel-main">
-            <img id="mainImage" src="/images/product-premium-1.jpg" alt="Islak Mendil Premium">
+            @php
+              $imgs = is_array($product->images_urls ?? null) ? $product->images_urls : [];
+              $main = $imgs[0] ?? null;
+            @endphp
+
+            @if($main)
+              <img id="mainImage" src="{{ $main }}" alt="{{ $product->title ?? 'Ürün' }}">
+            @else
+              <img id="mainImage" src="/images/product-premium-1.jpg" alt="{{ $product->title ?? 'Ürün' }}">
+            @endif
           </div>
 
           <div class="carousel-thumbs">
-            <img class="thumb active" src="/images/product-premium-1.jpg" alt="View 1" data-full="/images/product-premium-1.jpg">
-            <img class="thumb" src="/images/product-premium-2.jpg" alt="View 2" data-full="/images/product-premium-2.jpg">
-            <img class="thumb" src="/images/product-premium-3.jpg" alt="View 3" data-full="/images/product-premium-3.jpg">
-            <img class="thumb" src="/images/product-premium-4.jpg" alt="View 4" data-full="/images/product-premium-4.jpg">
+            @if(!empty($imgs))
+              @foreach($imgs as $i => $img)
+                <img class="thumb {{ $i === 0 ? 'active' : '' }}"
+                     src="{{ $img }}"
+                     alt="View {{ $i + 1 }}"
+                     data-full="{{ $img }}">
+              @endforeach
+            @else
+              <img class="thumb active" src="/images/product-premium-1.jpg" alt="View 1" data-full="/images/product-premium-1.jpg">
+              <img class="thumb" src="/images/product-premium-2.jpg" alt="View 2" data-full="/images/product-premium-2.jpg">
+              <img class="thumb" src="/images/product-premium-3.jpg" alt="View 3" data-full="/images/product-premium-3.jpg">
+              <img class="thumb" src="/images/product-premium-4.jpg" alt="View 4" data-full="/images/product-premium-4.jpg">
+            @endif
           </div>
         </div>
+
       </div>
 
     </div>
   </div>
 </section>
+
+
 
 <!-- How to Order Section -->
 <section class="how-to-order">
