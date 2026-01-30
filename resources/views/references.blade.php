@@ -42,26 +42,22 @@
   </div>
 
   <!-- Logos Grid (sequential list) -->
-  <div class="references-logos">
-    <div class="references-container">
-      <div class="references-logos-grid" aria-live="polite">
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/visa-6.svg" alt="Visa"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/general-electric.svg" alt="General Electric"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/siemens-2.svg" alt="Siemens"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/3m-1.svg" alt="3M"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/uber-2.svg" alt="Uber"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/mastercard-4.svg" alt="Mastercard"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/spotify-2.svg" alt="Spotify"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" alt="Microsoft"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/samsung-3.svg" alt="Samsung"></div>
-        <div class="logo-card"><img class="logo-img" src="https://cdn.worldvectorlogo.com/logos/sony-2.svg" alt="Sony"></div>
-      </div>
+ <div class="references-logos">
+  <div class="references-container">
+    <div class="references-logos-grid" aria-live="polite">
+
+      @foreach($logos as $logo)
+        <div class="logo-card">
+          <img class="logo-img"
+               src="{{ asset('storage/'.$logo->logo_path) }}"
+               alt="{{ $logo->name }}">
+        </div>
+      @endforeach
+
     </div>
   </div>
+</div>
+
 </section>
 
 <!-- Stats Section -->

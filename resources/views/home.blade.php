@@ -11,7 +11,7 @@
 
     <!-- Logo Slider -->
         @include('partials.logoSlider', ['products' => $products3d])
-
+@include('partials.endSponsor', ['logos' => $logos])
     <!-- Logo Slider End -->
 
     @include('partials.footer')
