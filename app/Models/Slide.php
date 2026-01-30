@@ -22,13 +22,17 @@ class Slide extends Model
         'right_order' => 'integer',
     ];
 
-    public function getImageLeftUrlAttribute(): string
+    public function getImageLeftUrlAttribute(): ?string
     {
-        return Storage::disk('public')->url($this->image_left_path);
+        return $this->image_left_path
+            ? Storage::disk('public')->url($this->image_left_path)
+            : null;
     }
 
-    public function getImageRightUrlAttribute(): string
+    public function getImageRightUrlAttribute(): ?string
     {
-        return Storage::disk('public')->url($this->image_right_path);
+        return $this->image_right_path
+            ? Storage::disk('public')->url($this->image_right_path)
+            : null;
     }
 }

@@ -13,12 +13,15 @@
 </h2>
 <div class="product-cards-wrapper">
 
+  @foreach($products as $index => $product)
   <div class="product-card">
-         <h2 style="text-align:center;">3D Ürünlerimiz</h2>
+         @if($index === 0 && !empty($product->title))
+         <h2 style="text-align:center;">{{ $product->title }}</h2>
+         @endif
 
     <div class="product-overflow">
       <div class="product-model">
-        <model-viewer src="https://assets.codepen.io/3421562/leaves_keyboard.glb"
+        <model-viewer src="{{ asset('storage/'.$product->model_path) }}"
                       shadow-intensity="0.4"></model-viewer>
                       
       </div>
@@ -32,57 +35,10 @@
 
    
   </div>
-
-  <div class="product-card">
-    <div class="product-overflow">
-      <div class="product-model">
-        <model-viewer src="https://assets.codepen.io/3421562/topo_keyboard.glb"
-                      shadow-intensity="0.4"></model-viewer>
-      </div>
-    </div>
-
-    <div class="product-glass">
-      <div class="product-gradient-blur">
-        <div></div><div></div><div></div><div></div><div></div><div></div>
-      </div>
-    </div>
-
-   
-  </div>
- <div class="product-card">
-    <div class="product-overflow">
-      <div class="product-model">
-        <model-viewer src="https://assets.codepen.io/3421562/topo_keyboard.glb"
-                      shadow-intensity="0.4"></model-viewer>
-      </div>
-    </div>
-
-    <div class="product-glass">
-      <div class="product-gradient-blur">
-        <div></div><div></div><div></div><div></div><div></div><div></div>
-      </div>
-    </div>
-
-   
-  </div>
-  <div class="product-card">
-    <div class="product-overflow">
-      <div class="product-model">
-        <model-viewer src="https://assets.codepen.io/3421562/panda_keyboard.glb"
-                      shadow-intensity="0.4"></model-viewer>
-      </div>
-    </div>
-
-    <div class="product-glass">
-      <div class="product-gradient-blur">
-        <div></div><div></div><div></div><div></div><div></div><div></div>
-      </div>
-    </div>
-
-   
-  </div>
+  @endforeach
 
 </div>
+
 <h2 style="text-align:center; font-size:34px; font-weight:700; margin:60px 0 50px; color:#1a1a1a; position:relative;">
     Referanslarımız
 <span style="
