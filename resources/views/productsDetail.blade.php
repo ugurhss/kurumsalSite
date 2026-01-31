@@ -82,36 +82,54 @@
           </div>
         @endif
 
-        <div class="product-carousel">
-          <div class="carousel-main">
-            @php
-              $imgs = is_array($product->images_urls ?? null) ? $product->images_urls : [];
-              $main = $imgs[0] ?? null;
-            @endphp
+       <div class="product-carousel">
+  @php
+    // images alanı array / json olabilir
+    $raw = $product->images ?? [];
 
-            @if($main)
-              <img id="mainImage" src="{{ $main }}" alt="{{ $product->title ?? 'Ürün' }}">
-            @else
-              <img id="mainImage" src="/images/product-premium-1.jpg" alt="{{ $product->title ?? 'Ürün' }}">
-            @endif
-          </div>
+    if (is_string($raw)) {
+        $raw = json_decode($raw, true) ?: [];
+    }
 
-          <div class="carousel-thumbs">
-            @if(!empty($imgs))
-              @foreach($imgs as $i => $img)
-                <img class="thumb {{ $i === 0 ? 'active' : '' }}"
-                     src="{{ $img }}"
-                     alt="View {{ $i + 1 }}"
-                     data-full="{{ $img }}">
-              @endforeach
-            @else
-              <img class="thumb active" src="/images/product-premium-1.jpg" alt="View 1" data-full="/images/product-premium-1.jpg">
-              <img class="thumb" src="/images/product-premium-2.jpg" alt="View 2" data-full="/images/product-premium-2.jpg">
-              <img class="thumb" src="/images/product-premium-3.jpg" alt="View 3" data-full="/images/product-premium-3.jpg">
-              <img class="thumb" src="/images/product-premium-4.jpg" alt="View 4" data-full="/images/product-premium-4.jpg">
-            @endif
-          </div>
-        </div>
+    $imgs = is_array($raw) ? $raw : [];
+
+    $main = $imgs[0] ?? null;
+
+    $fallbacks = [
+        asset('images/product-premium-1.jpg'),
+        asset('images/product-premium-2.jpg'),
+        asset('images/product-premium-3.jpg'),
+        asset('images/product-premium-4.jpg'),
+    ];
+  @endphp
+
+  <div class="carousel-main">
+    <img id="mainImage"
+         src="{{ $main ? asset('storage/'.$main) : $fallbacks[0] }}"
+         alt="{{ $product->title ?? 'Ürün' }}">
+  </div>
+
+  <div class="carousel-thumbs">
+    @if(!empty($imgs))
+      @foreach($imgs as $i => $img)
+        <img class="thumb {{ $i === 0 ? 'active' : '' }}"
+             src="{{ asset('storage/'.$img) }}"
+             alt="View {{ $i + 1 }}"
+             data-full="{{ asset('storage/'.$img) }}">
+      @endforeach
+    @else
+      @foreach($fallbacks as $i => $fb)
+        <img class="thumb {{ $i === 0 ? 'active' : '' }}"
+             src="{{ $fb }}"
+             alt="View {{ $i + 1 }}"
+             data-full="{{ $fb }}">
+      @endforeach
+    @endif
+  </div>
+</div>
+
+
+
 
       </div>
 

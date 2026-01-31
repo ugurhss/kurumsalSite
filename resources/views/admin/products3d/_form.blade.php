@@ -138,18 +138,31 @@
 
 <script>
 function fillSpecsTemplate() {
-    const tpl = {
-        boyutlar: { genislik: "120 mm", yukseklik: "45 mm", derinlik: "80 mm" },
-        agirlik: "1.2 kg",
-        malzeme: "ABS Plastik",
-        renkler: ["Siyah", "Beyaz", "Kirmizi"],
-        uyumluluk: ["Web", "Mobil", "AR"],
-        render_kalitesi: "Yuksek",
-        poligon_sayisi: "45k",
-        doku_cozunurlugu: "4K",
-        dosya_formati: "GLB",
-        surum: "1.0"
-    };
+ const tpl = {
+    boyutlar: {
+        genislik: "65 mm",
+        yukseklik: "10 mm",
+        derinlik: "45 mm"
+    },
+    agirlik: "12 g",
+    malzeme: "Lamineli Plastik Film (PET/PE)",
+    renkler: [
+        "Beyaz",
+        "Pastel Mavi",
+        "Pastel Yesil"
+    ],
+    uyumluluk: [
+        "Web",
+        "Mobil",
+        "AR"
+    ],
+    render_kalitesi: "Yuksek",
+    poligon_sayisi: "6k",
+    doku_cozunurlugu: "2K",
+    dosya_formati: "GLB",
+    surum: "1.0"
+};
+
 
     const el = document.getElementById('specs');
     el.value = JSON.stringify(tpl, null, 2);
