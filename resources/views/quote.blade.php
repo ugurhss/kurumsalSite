@@ -1,13 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+  <section class="about-cta">
+  <div class="container-about">
+    <div class="cta-wrapper">
+      <h2>Teklif oluştur</h2>
+
+      <p class="cta-subtitle">
+        Güvenilir iş ortaklıkları ve uzun soluklu projelerle markalara değer katıyoruz.
+      </p>
+
+      <p class="cta-description">
+        Farklı sektörlerden birçok marka ile yürüttüğümüz başarılı iş birlikleri, 
+        kalite anlayışımızın ve hizmet gücümüzün en güçlü göstergesidir. 
+        Her projede markaya özel çözümler üreterek sürdürülebilir iş ortaklıkları kuruyoruz.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="/references" class="btn btn-primary">
+          <span class="btn-text">Referanslarımızı İnceleyin</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="/contact" class="btn btn-outline">Bizimle Çalışın</a>
+      </div>
+
+      <p class="cta-footer">
+        Siz de referanslarımız arasındaki yerinizi almak ister misiniz?
+      </p>
+    </div>
+  </div>
+</section>
 <section class="quote-page">
   <div class="container">
 
-    <header class="quote-hero">
-      <h1>Teklif Oluştur</h1>
-      <p>“İhtiyacınıza en uygun teklifi almak için hemen formu doldurun.”</p>
-    </header>
+
+
 
     <div class="quote-grid">
 

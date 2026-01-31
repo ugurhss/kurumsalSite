@@ -1,13 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+  <section class="about-cta">
+  <div class="container-about">
+    <div class="cta-wrapper">
+      <h2>Tedarikçi Başvurusu</h2>
+
+      <p class="cta-subtitle">
+        Güvenilir iş ortaklıkları ve uzun soluklu projelerle markalara değer katıyoruz.
+      </p>
+
+      <p class="cta-description">
+        Farklı sektörlerden birçok marka ile yürüttüğümüz başarılı iş birlikleri, 
+        kalite anlayışımızın ve hizmet gücümüzün en güçlü göstergesidir. 
+        Her projede markaya özel çözümler üreterek sürdürülebilir iş ortaklıkları kuruyoruz.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="/references" class="btn btn-primary">
+          <span class="btn-text">Referanslarımızı İnceleyin</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="/contact" class="btn btn-outline">Bizimle Çalışın</a>
+      </div>
+
+      <p class="cta-footer">
+        Siz de referanslarımız arasındaki yerinizi almak ister misiniz?
+      </p>
+    </div>
+  </div>
+</section>
 <section class="supplier-page">
   <div class="container">
 
-    <header class="supplier-hero">
-      <h1>Tedarikçi Başvurusu</h1>
-      <p>Güçlü ve sürdürülebilir hammadde tedarik ağımızda yerinizi alın.</p>
-    </header>
+ 
 
     <div class="supplier-grid">
 
