@@ -1,76 +1,98 @@
 @extends('admin.layout')
 
+@section('page-title', '3D Ürünler')
+
 @section('content')
-<h1>3D Ürünler</h1>
-
-<div style="margin:12px 0;">
-    <a href="{{ route('admin.products3d.create') }}"
-       style="padding:8px 12px;background:#0d6efd;color:#fff;text-decoration:none;border-radius:6px;">
-        + Yeni 3D Ürün
-    </a>
-</div>
-
-@if(session('success'))
-    <div style="padding:10px;border:1px solid #cce5ff;background:#e7f1ff;border-radius:6px;margin-bottom:12px;">
-        {{ session('success') }}
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    
+    {{-- Header --}}
+    <div class="p-6 border-b border-gray-200 bg-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-lg font-bold text-gray-800">3D Ürün Listesi</h2>
+            <p class="text-sm text-gray-500">3D modellerinizi buradan yönetebilirsiniz.</p>
+        </div>
+        
+        <a href="{{ route('admin.products3d.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center gap-2">
+            <i class="fa fa-plus"></i> Yeni 3D Ürün
+        </a>
     </div>
-@endif
 
-<table border="1" cellpadding="8" cellspacing="0" width="100%" style="border-collapse:collapse;">
-    <thead style="background:#f1f1f1;">
-        <tr>
-            <th>ID</th>
-            <th>Başlık</th>
-            <th>Model</th>
-            <th>Aktif</th>
-            <th>İşlem</th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse($items as $item)
-            <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->title ?? '-' }}</td>
+    {{-- Table --}}
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Başlık</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Model Önizleme</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">İşlem</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @forelse($items as $item)
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            #{{ $item->id }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">{{ $item->title ?? '-' }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            @if($item->model_path)
+                                <div class="h-32 w-40 mx-auto bg-gray-100 rounded border border-gray-200 overflow-hidden">
+                                    <model-viewer
+                                        src="{{ asset('storage/'.$item->model_path) }}"
+                                        class="w-full h-full"
+                                        camera-controls
+                                        auto-rotate
+                                        shadow-intensity="0.4"
+                                        disable-zoom>
+                                    </model-viewer>
+                                </div>
+                            @else
+                                <span class="text-xs text-gray-400 italic">Model Yok</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            @if($item->is_active)
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Aktif
+                                </span>
+                            @else
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                    Pasif
+                                </span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <div class="flex items-center justify-end gap-2">
+                                <a href="{{ route('admin.products3d.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-md transition-colors" title="Düzenle">
+                                    <i class="fa fa-edit"></i>
+                                </a>
 
-                {{-- GLB Önizleme --}}
-                <td style="width:180px;text-align:center;">
-                    @if($item->model_path)
-                        <model-viewer
-                            src="{{ asset('storage/'.$item->model_path) }}"
-                            style="width:160px;height:120px;"
-                            camera-controls
-                            auto-rotate
-                            shadow-intensity="0.4">
-                        </model-viewer>
-                    @else
-                        <small>-</small>
-                    @endif
-                </td>
-
-                <td style="text-align:center;">
-                    {{ $item->is_active ? 'Evet' : 'Hayır' }}
-                </td>
-
-                <td style="text-align:center;">
-                    <a href="{{ route('admin.products3d.edit', $item->id) }}">Düzenle</a>
-
-                    <form method="POST"
-                          action="{{ route('admin.products3d.destroy', $item->id) }}"
-                          style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button onclick="return confirm('Silinsin mi?')"
-                                style="margin-left:8px;background:#dc3545;color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer;">
-                            Sil
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="5" style="text-align:center;padding:20px;">Kayıt yok.</td>
-            </tr>
-        @endforelse
-    </tbody>
-</table>
+                                <form method="POST" action="{{ route('admin.products3d.destroy', $item->id) }}" class="inline-block" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-2 rounded-md transition-colors" title="Sil">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="px-6 py-10 text-center text-gray-500">
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fa fa-cube text-4xl text-gray-300 mb-3"></i>
+                                <p>Henüz 3D ürün eklenmemiş.</p>
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
 @endsection

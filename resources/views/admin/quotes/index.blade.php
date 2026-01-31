@@ -1,123 +1,124 @@
 @extends('admin.layout')
 
-@section('title', 'Teklifler')
+@section('page-title', 'Teklif Talepleri')
 
 @section('content')
-<div style="max-width:1100px;margin:30px auto;padding:0 16px;">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <h1 style="margin:0;font-size:28px;font-weight:800;">Teklifler</h1>
-    <div style="font-size:13px;color:#6b7280;">
-      Toplam: <strong style="color:#111827;">{{ $quotes->count() }}</strong>
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    
+    {{-- Header & Filter --}}
+    <div class="p-6 border-b border-gray-200 bg-gray-50">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-lg font-bold text-gray-800">Teklif Listesi</h2>
+                <p class="text-sm text-gray-500">Toplam {{ $quotes->count() }} teklif talebi bulundu</p>
+            </div>
+        </div>
+
+        <form method="GET" action="{{ url('/admin/quotes') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Durum</label>
+                <select name="status" class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                    @php $st = request('status'); @endphp
+                    <option value="">Hepsi</option>
+                    <option value="new" {{ $st==='new' ? 'selected' : '' }}>Yeni</option>
+                    <option value="contacted" {{ $st==='contacted' ? 'selected' : '' }}>İletişime Geçildi</option>
+                    <option value="closed" {{ $st==='closed' ? 'selected' : '' }}>Kapandı</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">E-posta</label>
+                <input type="text" name="email" value="{{ request('email') }}" placeholder="ornek@mail.com" 
+                       class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Telefon</label>
+                <input type="text" name="phone" value="{{ request('phone') }}" placeholder="05xx..." 
+                       class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            </div>
+
+            <div class="flex items-end gap-2">
+                <button type="submit" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center justify-center gap-2 h-[38px]">
+                    <i class="fa fa-filter"></i> Filtrele
+                </button>
+                <a href="{{ url('/admin/quotes') }}" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center justify-center h-[38px]" title="Sıfırla">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </form>
     </div>
-  </div>
 
-  @if(session('success'))
-    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:12px 14px;border-radius:10px;margin-bottom:14px;">
-      {{ session('success') }}
+    {{-- Table --}}
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ad Soyad / İletişim</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Firma / Şehir</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ürün</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">İşlem</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @forelse($quotes as $q)
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            #{{ $q->id }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">{{ $q->full_name }}</div>
+                            <div class="text-xs text-gray-500">{{ $q->email }}</div>
+                            <div class="text-xs text-gray-500">{{ $q->phone }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">{{ $q->company }}</div>
+                            <div class="text-xs text-gray-500">{{ $q->city }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            {{ $q->product }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            @php
+                                $statusClasses = [
+                                    'new' => 'bg-blue-100 text-blue-800',
+                                    'contacted' => 'bg-yellow-100 text-yellow-800',
+                                    'closed' => 'bg-green-100 text-green-800',
+                                ];
+                                $statusLabels = [
+                                    'new' => 'Yeni',
+                                    'contacted' => 'İletişime Geçildi',
+                                    'closed' => 'Kapandı',
+                                ];
+                            @endphp
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$q->status] ?? 'bg-gray-100 text-gray-800' }}">
+                                {{ $statusLabels[$q->status] ?? $q->status }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            {{ optional($q->created_at)->format('d.m.Y H:i') }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="{{ url('/admin/quotes/'.$q->id) }}" class="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-3 py-1 rounded-md transition-colors">
+                                Detay
+                            </a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7" class="px-6 py-10 text-center text-gray-500">
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fa fa-file-invoice-dollar text-4xl text-gray-300 mb-3"></i>
+                                <p>Henüz teklif talebi bulunmuyor.</p>
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-  @endif
-
-  {{-- Filtre --}}
-  <form method="GET" action="{{ url('/admin/quotes') }}"
-        style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;margin-bottom:16px;">
-    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;">
-      <div>
-        <label style="display:block;font-size:12px;color:#6b7280;margin-bottom:6px;">Durum</label>
-        <select name="status" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-          @php $st = request('status'); @endphp
-          <option value="">Hepsi</option>
-          <option value="new" {{ $st==='new' ? 'selected' : '' }}>new</option>
-          <option value="contacted" {{ $st==='contacted' ? 'selected' : '' }}>contacted</option>
-          <option value="closed" {{ $st==='closed' ? 'selected' : '' }}>closed</option>
-        </select>
-      </div>
-
-      <div>
-        <label style="display:block;font-size:12px;color:#6b7280;margin-bottom:6px;">E-posta</label>
-        <input name="email" value="{{ request('email') }}" placeholder="ornek@mail.com"
-               style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-      </div>
-
-      <div>
-        <label style="display:block;font-size:12px;color:#6b7280;margin-bottom:6px;">Telefon</label>
-        <input name="phone" value="{{ request('phone') }}" placeholder="05xx..."
-               style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-      </div>
-
-      <div style="display:flex;align-items:end;gap:10px;">
-        <button type="submit"
-                style="padding:10px 14px;border:0;border-radius:10px;background:#111827;color:#fff;font-weight:700;cursor:pointer;">
-          Filtrele
-        </button>
-        <a href="{{ url('/admin/quotes') }}"
-           style="padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#111827;text-decoration:none;font-weight:700;">
-          Sıfırla
-        </a>
-      </div>
-    </div>
-  </form>
-
-  {{-- Liste --}}
-  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;">
-    <table style="width:100%;border-collapse:collapse;">
-      <thead>
-        <tr style="background:#f9fafb;border-bottom:1px solid #e5e7eb;">
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">ID</th>
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">Ad Soyad</th>
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">Firma</th>
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">Ürün</th>
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">Durum</th>
-          <th style="text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;">Tarih</th>
-          <th style="text-align:right;padding:12px 14px;font-size:12px;color:#6b7280;">İşlem</th>
-        </tr>
-      </thead>
-      <tbody>
-        @forelse($quotes as $q)
-          <tr style="border-bottom:1px solid #f3f4f6;">
-            <td style="padding:12px 14px;color:#111827;font-weight:700;">#{{ $q->id }}</td>
-            <td style="padding:12px 14px;">
-              <div style="font-weight:700;color:#111827;">{{ $q->full_name }}</div>
-              <div style="font-size:12px;color:#6b7280;">
-                {{ $q->email }} • {{ $q->phone }}
-              </div>
-            </td>
-            <td style="padding:12px 14px;">
-              <div style="font-weight:700;color:#111827;">{{ $q->company }}</div>
-              <div style="font-size:12px;color:#6b7280;">{{ $q->city }}</div>
-            </td>
-            <td style="padding:12px 14px;color:#111827;">{{ $q->product }}</td>
-            <td style="padding:12px 14px;">
-              @php
-                $badge = match($q->status){
-                  'new' => ['#eff6ff', '#1d4ed8'],
-                  'contacted' => ['#fffbeb', '#92400e'],
-                  'closed' => ['#ecfdf5', '#065f46'],
-                  default => ['#f3f4f6', '#374151'],
-                };
-              @endphp
-              <span style="display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;background:{{ $badge[0] }};color:{{ $badge[1] }};">
-                {{ $q->status }}
-              </span>
-            </td>
-            <td style="padding:12px 14px;font-size:13px;color:#6b7280;">
-              {{ optional($q->created_at)->format('d.m.Y H:i') }}
-            </td>
-            <td style="padding:12px 14px;text-align:right;">
-              <a href="{{ url('/admin/quotes/'.$q->id) }}"
-                 style="display:inline-block;padding:8px 12px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;font-weight:700;font-size:13px;">
-                Detay
-              </a>
-            </td>
-          </tr>
-        @empty
-          <tr>
-            <td colspan="7" style="padding:18px 14px;color:#6b7280;">
-              Kayıt bulunamadı.
-            </td>
-          </tr>
-        @endforelse
-      </tbody>
-    </table>
-  </div>
 </div>
 @endsection

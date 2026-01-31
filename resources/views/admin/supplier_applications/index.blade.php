@@ -1,96 +1,114 @@
 @extends('admin.layout')
 
+@section('page-title', 'Tedarikçi Başvuruları')
+
 @section('content')
-<div style="max-width:1200px;margin:30px auto;padding:0 16px;">
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    
+    {{-- Header & Filter --}}
+    <div class="p-6 border-b border-gray-200 bg-gray-50">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-lg font-bold text-gray-800">Başvuru Listesi</h2>
+                <p class="text-sm text-gray-500">Toplam {{ $applications->count() }} başvuru bulundu</p>
+            </div>
+        </div>
 
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-    <h1 style="font-size:28px;font-weight:800;">Tedarikçi Başvuruları</h1>
-    <span style="color:#6b7280;font-size:14px;">
-      Toplam: <strong>{{ $applications->count() }}</strong>
-    </span>
-  </div>
+        <form method="GET" action="{{ route('admin.supplier_applications.index') }}" class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <input type="text" name="email" value="{{ request('email') }}" placeholder="E-posta" 
+                   class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            
+            <input type="text" name="phone" value="{{ request('phone') }}" placeholder="Telefon" 
+                   class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            
+            <input type="text" name="city" value="{{ request('city') }}" placeholder="Şehir" 
+                   class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+            
+            <select name="status" class="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                <option value="">Durum (Hepsi)</option>
+                <option value="new" {{ request('status')=='new'?'selected':'' }}>Yeni</option>
+                <option value="reviewed" {{ request('status')=='reviewed'?'selected':'' }}>İncelendi</option>
+                <option value="approved" {{ request('status')=='approved'?'selected':'' }}>Onaylandı</option>
+                <option value="rejected" {{ request('status')=='rejected'?'selected':'' }}>Reddedildi</option>
+            </select>
 
-  @if(session('success'))
-    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:12px;border-radius:10px;margin-bottom:14px;">
-      {{ session('success') }}
+            <div class="flex gap-2">
+                <button type="submit" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+                    <i class="fa fa-filter"></i> Filtrele
+                </button>
+                <a href="{{ route('admin.supplier_applications.index') }}" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center justify-center" title="Sıfırla">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </form>
     </div>
-  @endif
 
-  {{-- Filtre --}}
-  <form method="GET" action="{{ route('admin.supplier_applications.index') }}"
-        style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;margin-bottom:16px;">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-      <input name="email" value="{{ request('email') }}" placeholder="E-posta"
-             style="padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-      <input name="phone" value="{{ request('phone') }}" placeholder="Telefon"
-             style="padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-      <input name="city" value="{{ request('city') }}" placeholder="Şehir"
-             style="padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-      <select name="status" style="padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-        <option value="">Durum (Hepsi)</option>
-        <option value="new" {{ request('status')=='new'?'selected':'' }}>new</option>
-        <option value="reviewed" {{ request('status')=='reviewed'?'selected':'' }}>reviewed</option>
-        <option value="approved" {{ request('status')=='approved'?'selected':'' }}>approved</option>
-        <option value="rejected" {{ request('status')=='rejected'?'selected':'' }}>rejected</option>
-      </select>
+    {{-- Table --}}
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ad Soyad / E-posta</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Firma</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ürün</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Durum</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">İşlem</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @forelse($applications as $app)
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            #{{ $app->id }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">{{ $app->full_name }}</div>
+                            <div class="text-xs text-gray-500">{{ $app->email }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            {{ $app->company }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                            {{ $app->product }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            @php
+                                $statusClasses = [
+                                    'new' => 'bg-blue-100 text-blue-800',
+                                    'reviewed' => 'bg-yellow-100 text-yellow-800',
+                                    'approved' => 'bg-green-100 text-green-800',
+                                    'rejected' => 'bg-red-100 text-red-800',
+                                ];
+                                $statusLabels = [
+                                    'new' => 'Yeni',
+                                    'reviewed' => 'İncelendi',
+                                    'approved' => 'Onaylandı',
+                                    'rejected' => 'Reddedildi',
+                                ];
+                            @endphp
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$app->status] ?? 'bg-gray-100 text-gray-800' }}">
+                                {{ $statusLabels[$app->status] ?? $app->status }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="{{ route('admin.supplier_applications.show', $app->id) }}" class="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 px-3 py-1 rounded-md transition-colors">
+                                Detay
+                            </a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="px-6 py-10 text-center text-gray-500">
+                            <div class="flex flex-col items-center justify-center">
+                                <i class="fa fa-truck text-4xl text-gray-300 mb-3"></i>
+                                <p>Henüz başvuru bulunmuyor.</p>
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-
-    <div style="margin-top:12px;display:flex;gap:10px;">
-      <button type="submit"
-              style="background:#111827;color:#fff;padding:10px 14px;border-radius:10px;border:none;font-weight:700;">
-        Filtrele
-      </button>
-      <a href="{{ route('admin.supplier_applications.index') }}"
-         style="padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;">
-        Sıfırla
-      </a>
-    </div>
-  </form>
-
-  {{-- Liste --}}
-  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;">
-    <table style="width:100%;border-collapse:collapse;">
-      <thead style="background:#f9fafb;">
-        <tr>
-          <th style="padding:12px;text-align:left;">ID</th>
-          <th style="padding:12px;text-align:left;">Ad Soyad</th>
-          <th style="padding:12px;text-align:left;">Firma</th>
-          <th style="padding:12px;text-align:left;">Ürün</th>
-          <th style="padding:12px;text-align:left;">Durum</th>
-          <th style="padding:12px;text-align:right;">İşlem</th>
-        </tr>
-      </thead>
-      <tbody>
-        @forelse($applications as $app)
-          <tr style="border-top:1px solid #f1f5f9;">
-            <td style="padding:12px;">#{{ $app->id }}</td>
-            <td style="padding:12px;">
-              <strong>{{ $app->full_name }}</strong><br>
-              <small style="color:#6b7280;">{{ $app->email }}</small>
-            </td>
-            <td style="padding:12px;">{{ $app->company }}</td>
-            <td style="padding:12px;">{{ $app->product }}</td>
-            <td style="padding:12px;">
-              <span style="padding:5px 10px;border-radius:999px;font-size:12px;
-                background:#f3f4f6;color:#111827;">
-                {{ $app->status }}
-              </span>
-            </td>
-            <td style="padding:12px;text-align:right;">
-              <a href="{{ route('admin.supplier_applications.show',$app->id) }}"
-                 style="background:#111827;color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none;font-size:13px;">
-                Detay
-              </a>
-            </td>
-          </tr>
-        @empty
-          <tr>
-            <td colspan="6" style="padding:16px;color:#6b7280;">Kayıt yok.</td>
-          </tr>
-        @endforelse
-      </tbody>
-    </table>
-  </div>
-
 </div>
 @endsection
