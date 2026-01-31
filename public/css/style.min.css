@@ -1602,3 +1602,158 @@
       font-size: 0.8rem;
     }
   }
+  .quote-page{padding:70px 0;background:#f6f7fb}
+  .container{max-width:1100px;margin:0 auto;padding:0 18px}
+
+  .quote-hero{margin-bottom:24px}
+  .quote-hero h1{font-size:40px;line-height:1.1;margin:0 0 10px;color:#101828}
+  .quote-hero p{margin:0;color:#475467;font-size:16px}
+
+  .quote-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px}
+  @media(max-width:900px){.quote-grid{grid-template-columns:1fr}}
+
+  .quote-card{
+    background:#fff;border:1px solid #eaecf0;border-radius:18px;padding:22px;
+    box-shadow:0 10px 30px rgba(16,24,40,.06)
+  }
+  .quote-card h2{margin:0 0 10px;font-size:20px;color:#101828}
+  .quote-card p{margin:0 0 14px;color:#475467}
+
+  /* .info-note{
+    margin-top:14px;padding:12px;border-radius:14px;
+    background:#ecfdf3;border:1px solid #abefc6;color:#067647;font-size:13px
+  } */
+
+  .alert{border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px}
+  .alert.success{background:#ecfdf3;border:1px solid #abefc6;color:#067647}
+  .alert.error{background:#fef3f2;border:1px solid #fecdca;color:#b42318}
+  .alert ul{margin:0;padding-left:18px}
+
+  .form{margin-top:8px}
+  .form-row{display:grid;grid-template-columns:1fr;gap:12px}
+  .form-row.two{grid-template-columns:1fr 1fr}
+  @media(max-width:700px){.form-row.two{grid-template-columns:1fr}}
+
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  label{font-size:13px;color:#344054;font-weight:700;letter-spacing:.02em}
+  input, textarea{
+    border:1px solid #d0d5dd;border-radius:14px;padding:12px 12px;
+    font-size:14px;outline:none;background:#fff;color:#101828;
+    transition:.15s border-color,.15s box-shadow
+  }
+  input:focus, textarea:focus{border-color:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+
+  .btn-submit{
+    width:100%;border:none;border-radius:14px;padding:12px 14px;
+    background:#2563eb;color:#fff;font-weight:800;font-size:14px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    cursor:pointer;transition:.15s transform,.15s opacity
+  }
+  .btn-submit:hover{opacity:.95;transform:translateY(-1px)}
+  .btn-arrow{font-size:16px}
+
+  .form-footnote{margin:10px 0 0;color:#667085;font-size:12px}
+.contact-page{padding:70px 0;background:#f6f7fb}
+.container{max-width:1100px;margin:0 auto;padding:0 18px}
+.contact-hero{margin-bottom:24px}
+.contact-hero h1{font-size:40px;margin-bottom:10px;color:#101828}
+.contact-hero p{color:#475467}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+
+.contact-card{
+  background:#fff;border-radius:18px;padding:22px;
+  border:1px solid #eaecf0;
+  box-shadow:0 10px 30px rgba(16,24,40,.06)
+}
+.contact-card h2{font-size:20px;margin-bottom:10px;color:#101828}
+
+.info-list{display:grid;gap:10px;margin:14px 0}
+.info-item{background:#f9fafb;border:1px solid #f2f4f7;border-radius:14px;padding:12px}
+.info-label{font-size:12px;color:#667085}
+.info-value{font-weight:600;color:#101828}
+
+.contact-map{
+  margin-top:14px;border-radius:16px;overflow:hidden;
+  border:1px solid #eaecf0;
+}
+.contact-map iframe{width:100%;height:220px;border:0}
+
+.info-note{
+  margin-top:14px;padding:12px;border-radius:14px;
+  background:#ecfdf3;border:1px solid #abefc6;
+  color:#067647;font-size:13px
+}
+
+.alert{padding:12px;border-radius:14px;margin-bottom:12px}
+.alert.success{background:#ecfdf3;border:1px solid #abefc6;color:#067647}
+.alert.error{background:#fef3f2;border:1px solid #fecdca;color:#b42318}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.form-row{grid-template-columns:1fr}}
+
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+input,textarea{
+  border:1px solid #d0d5dd;border-radius:14px;
+  padding:12px;font-size:14px
+}
+input:focus,textarea:focus{outline:none;border-color:#2563eb}
+
+.btn-submit{
+  width:100%;padding:12px;border-radius:14px;
+  background:#2563eb;color:#fff;font-weight:700;
+  border:none;cursor:pointer
+}
+.form-footnote{margin-top:10px;font-size:12px;color:#667085}
+  .supplier-page{padding:70px 0;background:#f6f7fb}
+  .container{max-width:1100px;margin:0 auto;padding:0 18px}
+
+  .supplier-hero{margin-bottom:24px}
+  .supplier-hero h1{font-size:40px;line-height:1.1;margin:0 0 10px;color:#101828}
+  .supplier-hero p{margin:0;color:#475467;font-size:16px}
+
+  .supplier-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px}
+  @media(max-width:900px){.supplier-grid{grid-template-columns:1fr}}
+
+  .card{
+    background:#fff;border:1px solid #eaecf0;border-radius:18px;padding:22px;
+    box-shadow:0 10px 30px rgba(16,24,40,.06)
+  }
+  .card h2{margin:0 0 10px;font-size:20px;color:#101828}
+  .card p{margin:0 0 14px;color:#475467}
+
+  /* .note{
+    margin-top:14px;padding:12px;border-radius:14px;
+    background:#eff8ff;border:1px solid #b2ddff;color:#175cd3;font-size:13px
+  } */
+
+  .alert{border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:14px}
+  .alert.success{background:#ecfdf3;border:1px solid #abefc6;color:#067647}
+  .alert.error{background:#fef3f2;border:1px solid #fecdca;color:#b42318}
+  .alert ul{margin:0;padding-left:18px}
+
+  .form{margin-top:8px}
+  .row{display:grid;grid-template-columns:1fr;gap:12px}
+  .row.two{grid-template-columns:1fr 1fr}
+  @media(max-width:700px){.row.two{grid-template-columns:1fr}}
+
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+  label{font-size:13px;color:#344054;font-weight:800;letter-spacing:.02em}
+  input, textarea{
+    border:1px solid #d0d5dd;border-radius:14px;padding:12px 12px;
+    font-size:14px;outline:none;background:#fff;color:#101828;
+    transition:.15s border-color,.15s box-shadow
+  }
+  input:focus, textarea:focus{border-color:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+
+  .btn-submit{
+    width:100%;border:none;border-radius:14px;padding:12px 14px;
+    background:#101828;color:#fff;font-weight:900;font-size:14px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    cursor:pointer;transition:.15s transform,.15s opacity
+  }
+  .btn-submit:hover{opacity:.95;transform:translateY(-1px)}
+  .arrow{font-size:16px}
+
+  .footnote{margin:10px 0 0;color:#667085;font-size:12px}
