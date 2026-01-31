@@ -20,7 +20,10 @@ Route::get('/products3d/{id}', [FrontendController::class, 'show'])
     ->name('products3d.show');
 
 
+Route::view('/contact', 'contact');
 
+Route::view('/quote', 'quote');
+Route::view('/supplier', 'supplier-apply');
 
 
 Route::prefix('admin')->name('admin.')->group(function () {

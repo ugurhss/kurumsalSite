@@ -13,7 +13,7 @@
         <li><a href="/" class="navbar-link">Anasayfa</a></li>
         <li><a href="/about" class="navbar-link">Hakkımızda</a></li>
         <li><a href="/products" class="navbar-link">Ürünler</a></li>
-        <li><a href="/references" class="navbar-link">Referanslar</a></li>
+        <li><a href="/reference" class="navbar-link">Referanslar</a></li>
         <li><a href="/contact" class="navbar-link">İletişim</a></li>
       </ul>
     </nav>

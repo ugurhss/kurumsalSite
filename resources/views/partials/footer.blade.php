@@ -16,7 +16,7 @@
         <ul>
           <li><a href="/about">Hakkımızda</a></li>
           <li><a href="/products">Ürünler</a></li>
-          <li><a href="/references">Referanslarımız</a></li>
+          <li><a href="/reference">Referanslarımız</a></li>
           <li><a href="/careers">İletişim</a></li>
         </ul>
       </div>

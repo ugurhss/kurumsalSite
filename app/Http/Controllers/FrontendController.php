@@ -58,4 +58,10 @@ class FrontendController extends Controller
 
         return view('productsDetail', compact('product'));
     }
+
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }
