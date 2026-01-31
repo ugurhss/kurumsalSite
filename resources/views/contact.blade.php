@@ -66,7 +66,7 @@
           </div>
         @endif
 
-        <form action="{{ url('/contact') }}" method="POST" class="form">
+<form action="{{ route('contact.store') }}" method="POST" class="form">
           @csrf
 
           <div class="form-row">
@@ -105,7 +105,6 @@
   </div>
 </section>
 
-{{-- STYLES --}}
 
 
 @include('partials.footer')

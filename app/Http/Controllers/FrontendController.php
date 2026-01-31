@@ -60,8 +60,17 @@ class FrontendController extends Controller
     }
 
 
-    public function contact()
+    public function quote()
+    {
+        return view('quote');
+    }
+    public function supplierApply()
+    {
+        return view('supplier-apply');
+    }
+
+      public function contact()
     {
         return view('contact');
     }
-}
+    }
