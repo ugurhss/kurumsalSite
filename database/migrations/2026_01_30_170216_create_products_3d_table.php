@@ -14,13 +14,10 @@ return new class extends Migration
         Schema::create('products_3d', function (Blueprint $table) {
             $table->id();
 
-            // Ürün başlığı (örn: "3D Ürünlerimiz")
             $table->string('title')->nullable();
 
-            // 3D model dosyası (.glb / .gltf)
             $table->string('model_path');
 
-            // Görünürlük
             $table->boolean('is_active')->default(true);
 
          

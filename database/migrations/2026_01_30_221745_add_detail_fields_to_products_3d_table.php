@@ -14,7 +14,7 @@ return new class extends Migration
             $table->unique('slug');
 
             // kısa açıklama / uzun açıklama
-            // $table->string('short_description', 500)->nullable()->after('slug');
+        $table->string('short_description', 500)->nullable()->after('slug');
             $table->longText('description')->nullable()->after('short_description');
 
             // özellikler ve carousel görselleri
