@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Hakkımızda - Gren Kurumsal')
+@section('meta_description', '2017 yılından bu yana özel üretimli ambalaj çözümleriyle markalara değer katıyoruz. Gren Kurumsal\'ın hikayesi ve değerleri hakkında bilgi alın.')
+@section('meta_keywords', 'gren kurumsal hakkında, ambalaj çözümleri, özel üretim ambalaj, kurumsal hikayemiz')
+
 @section('content')
 
 <!-- ABOUT CTA -->
@@ -13,8 +17,8 @@
       </p>
 
       <p class="cta-description">
-        Ambalajın yalnızca bir koruma unsuru değil, markanın duruşunu ve algısını yansıtan 
-        güçlü bir iletişim aracı olduğuna inanıyoruz. Bu anlayışla her markaya özgü, 
+        Ambalajın yalnızca bir koruma unsuru değil, markanın duruşunu ve algısını yansıtan
+        güçlü bir iletişim aracı olduğuna inanıyoruz. Bu anlayışla her markaya özgü,
         estetik ve işlevsel ambalajlar tasarlıyoruz.
       </p>
 
@@ -41,19 +45,19 @@
         <h2>Firmamızın Hikayesi</h2>
 
         <p>
-          2017 yılında ambalaj sektöründe faaliyetlerine başlayan firmamız, 
-          özel üretimli ambalaj çözümleriyle markaların prestijini yükseltmeyi hedeflemektedir. 
+          2017 yılında ambalaj sektöründe faaliyetlerine başlayan firmamız,
+          özel üretimli ambalaj çözümleriyle markaların prestijini yükseltmeyi hedeflemektedir.
           Tasarım, kalite ve detaylara verilen önemle her markaya özgü ayrıcalıklı ambalajlar üretiyoruz.
         </p>
 
         <p>
-          Estetik, dayanıklılık ve işlevselliği bir araya getiren üretim anlayışımızla; 
-          modern teknolojiyi titiz işçilikle buluşturuyor, yüksek kalite standartlarında 
+          Estetik, dayanıklılık ve işlevselliği bir araya getiren üretim anlayışımızla;
+          modern teknolojiyi titiz işçilikle buluşturuyor, yüksek kalite standartlarında
           özel üretim ambalajlar sunuyoruz.
         </p>
 
         <p>
-          Deneyimli ekibimiz ve güvenilir hizmet anlayışımızla, iş ortaklarımıza uzun vadeli 
+          Deneyimli ekibimiz ve güvenilir hizmet anlayışımızla, iş ortaklarımıza uzun vadeli
           değer yaratan, sürdürülebilir ve seçkin ambalaj çözümleri sunmaya devam ediyoruz.
         </p>
       </div>

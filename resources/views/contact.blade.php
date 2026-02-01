@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'İletişim - Gren Kurumsal')
+@section('meta_description', 'Gren Kurumsal ile iletişime geçin. Adres, telefon ve e-posta bilgilerimize ulaşabilir veya iletişim formunu kullanarak mesajınızı iletebilirsiniz.')
+@section('meta_keywords', 'gren iletişim, kurumsal iletişim, ambalaj firması mersin, iletişim formu')
+
 @section('content')
 
 <section class="contact-page">

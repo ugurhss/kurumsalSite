@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Fiyat Teklifi Al - Gren Kurumsal')
+@section('meta_description', 'Markanıza özel ambalaj çözümleri için hızlıca fiyat teklifi alın. Proje detaylarınızı iletin, uzman ekibimiz size en uygun çözümleri sunsun.')
+@section('meta_keywords', 'gren teklif al, ambalaj fiyat teklifi, özel üretim ambalaj fiyatları, kurumsal teklif formu')
+
 @section('content')
 
 <section class="about-cta">

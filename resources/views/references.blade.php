@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Referanslarımız - Gren Kurumsal')
+@section('meta_description', 'Güvenilir iş ortaklıklarımız ve başarılı projelerimizle markalara değer katıyoruz. Gren Kurumsal\'ın referanslarını ve global müşterilerini inceleyin.')
+@section('meta_keywords', 'gren referanslar, iş ortaklıkları, global müşteriler, ambalaj referansları')
+
 @section('content')
 
 <!-- References Hero Section -->
@@ -13,8 +17,8 @@
       </p>
 
       <p class="cta-description">
-        Farklı sektörlerden birçok marka ile yürüttüğümüz başarılı iş birlikleri, 
-        kalite anlayışımızın ve hizmet gücümüzün en güçlü göstergesidir. 
+        Farklı sektörlerden birçok marka ile yürüttüğümüz başarılı iş birlikleri,
+        kalite anlayışımızın ve hizmet gücümüzün en güçlü göstergesidir.
         Her projede markaya özel çözümler üreterek sürdürülebilir iş ortaklıkları kuruyoruz.
       </p>
 

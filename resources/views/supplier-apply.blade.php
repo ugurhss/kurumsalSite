@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Tedarikçi Başvurusu - Gren Kurumsal')
+@section('meta_description', 'Gren Kurumsal tedarik zincirine katılın. Ürün ve hammadde tedariği için başvuruda bulunun, sürdürülebilir iş ortaklıklarımızın bir parçası olun.')
+@section('meta_keywords', 'gren tedarikçi başvurusu, kurumsal tedarikçi, hammadde tedariği, iş ortaklığı başvurusu')
+
 @section('content')
   <section class="about-cta">
   <div class="container-about">

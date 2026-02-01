@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Ürünlerimiz - Gren Kurumsal')
+@section('meta_description', 'Markanıza özel tasarlanan, yüksek kalite standartlarında ambalaj çözümlerimizi inceleyin. 3D ürün modellerimiz ve detayları için ürün sayfamızı ziyaret edin.')
+@section('meta_keywords', 'gren ambalaj ürünleri, 3D ürün modelleri, özel tasarım ambalaj, kurumsal ambalaj çözümleri')
+
 @section('content')
 
 <!-- Products Hero -->
@@ -13,8 +17,8 @@
       </p>
 
       <p class="cta-description">
-        Ürün gamımız; estetik, dayanıklılık ve işlevselliği bir araya getiren 
-        özel üretim ambalajlardan oluşur. Her ürün, markanızın kimliğini 
+        Ürün gamımız; estetik, dayanıklılık ve işlevselliği bir araya getiren
+        özel üretim ambalajlardan oluşur. Her ürün, markanızın kimliğini
         en doğru şekilde yansıtacak şekilde titizlikle tasarlanır ve üretilir.
       </p>
 

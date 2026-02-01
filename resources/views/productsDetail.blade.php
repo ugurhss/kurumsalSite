@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', ($product->title ?? 'Ürün Detayı') . ' - Gren Kurumsal')
+@section('meta_description', Str::limit(strip_tags($product->description ?? 'Markanıza özel tasarlanan, yüksek kalite standartlarında ambalaj çözümü.'), 160))
+@section('meta_keywords', ($product->title ?? 'ürün') . ', gren ambalaj, özel üretim ambalaj, 3D ürün')
+
 @section('content')
 
 <!-- Product Detail Hero -->
@@ -143,14 +147,14 @@
 <section class="how-to-order">
   <div class="container-product">
     <h2>3 Kolay Adımda Siparişinizi Verebilirsiniz</h2>
-    
+
     <div class="steps-grid">
       <!-- ADIM 1: Renk Seçimi -->
       <div class="step-card enhanced">
         <div class="step-number">ADIM 1</div>
         <h3>Renk Seçin</h3>
         <p class="step-subtitle">İlk adım olarak logonuz ve kurumsal kimliğinize uygun olarak kullanılacak baskı renkleri belirlenin.</p>
-        
+
         <div class="step-options">
           <div class="option-item">
             <div class="color-swatch single-color"></div>
@@ -185,7 +189,7 @@
         <div class="step-number">ADIM 2</div>
         <h3>Boyut Belirleyin</h3>
         <p class="step-subtitle">İkinci aşamada ambalaj ölçüleri ve kağıt türü belirlenerek tarafınıza teklif sunulur.</p>
-        
+
         <div class="step-options size-options">
           <div class="size-item">
             <div class="size-box">
@@ -216,7 +220,7 @@
         <div class="step-number">ADIM 3</div>
         <h3>Teslimat Süresini Seçin</h3>
         <p class="step-subtitle">Son olarak sipariş süresi kriterlerinize uygun olarak tasarımınız hazırlanır ve anayınıza sunularak başkıya alınır.</p>
-        
+
         <div class="step-options delivery-options">
           <div class="delivery-item">
             <div class="delivery-badge fast">
