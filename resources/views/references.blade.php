@@ -54,7 +54,7 @@
         <div class="logo-card">
           <img class="logo-img"
                src="{{ asset('storage/'.$logo->logo_path) }}"
-               alt="{{ $logo->name }}">
+               alt="{{ $logo->name }} Logo">
         </div>
       @endforeach
 

@@ -118,14 +118,14 @@
       @foreach($imgs as $i => $img)
         <img class="thumb {{ $i === 0 ? 'active' : '' }}"
              src="{{ asset('storage/'.$img) }}"
-             alt="View {{ $i + 1 }}"
+             alt="{{ $product->title ?? 'Ürün' }} - Görsel {{ $i + 1 }}"
              data-full="{{ asset('storage/'.$img) }}">
       @endforeach
     @else
       @foreach($fallbacks as $i => $fb)
         <img class="thumb {{ $i === 0 ? 'active' : '' }}"
              src="{{ $fb }}"
-             alt="View {{ $i + 1 }}"
+             alt="{{ $product->title ?? 'Ürün' }} - Örnek Görsel {{ $i + 1 }}"
              data-full="{{ $fb }}">
       @endforeach
     @endif
