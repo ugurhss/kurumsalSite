@@ -25,7 +25,7 @@
         <div class="info-list">
           <div class="info-item">
             <span class="info-label">Telefon</span>
-            <span class="info-value">0 (544) 438 37 94</span>
+            <span class="info-value">0 545 774 82 55</span>
           </div>
           <div class="info-item">
             <span class="info-label">E-posta</span>
