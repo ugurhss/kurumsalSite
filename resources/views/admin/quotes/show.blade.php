@@ -2,122 +2,136 @@
 
 @section('title', 'Teklif Detay')
 
+@section('page-title', 'Teklif Talebi Detayı')
+
 @section('content')
-<div style="max-width:1000px;margin:30px auto;padding:0 16px;">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-    <div>
-      <h1 style="margin:0;font-size:28px;font-weight:900;">Teklif Detay</h1>
-      <div style="margin-top:6px;color:#6b7280;font-size:13px;">
-        #{{ $quote->id }} • {{ optional($quote->created_at)->format('d.m.Y H:i') }}
-      </div>
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Teklif #{{ $quote->id }}</h2>
+            <p class="text-sm text-gray-500">{{ optional($quote->created_at)->format('d.m.Y H:i') }} tarihinde oluşturuldu</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="{{ url('/admin/quotes') }}" class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2">
+                <i class="fa fa-arrow-left"></i> Listeye Dön
+            </a>
+            <form method="POST" action="{{ url('/admin/quotes/'.$quote->id) }}" onsubmit="return confirm('Silmek istediğine emin misin?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition-colors flex items-center gap-2">
+                    <i class="fa fa-trash"></i> Sil
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div style="display:flex;gap:10px;align-items:center;">
-      <a href="{{ url('/admin/quotes') }}"
-         style="padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#111827;text-decoration:none;font-weight:800;">
-        ← Liste
-      </a>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {{-- Sol Kolon: Teklif İçeriği --}}
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 border-b border-gray-200 bg-gray-50/50">
+                    <h3 class="font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa fa-id-card text-indigo-500"></i> İletişim ve Firma Bilgileri
+                    </h3>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-4">
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ad Soyad</label>
+                        <p class="text-gray-900 font-semibold">{{ $quote->full_name }}</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Firma</label>
+                        <p class="text-gray-900 font-semibold">{{ $quote->company ?? '-' }}</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">E-posta</label>
+                        <p class="text-gray-900 font-semibold italic">
+                            <a href="mailto:{{ $quote->email }}" class="text-indigo-600 hover:underline">{{ $quote->email }}</a>
+                        </p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Telefon</label>
+                        <p class="text-gray-900 font-semibold">{{ $quote->phone }}</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Şehir</label>
+                        <p class="text-gray-900 font-semibold">{{ $quote->city ?? '-' }}</p>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">İlgilenilen Ürün</label>
+                        <p class="text-gray-900 font-semibold">{{ $quote->product ?? '-' }}</p>
+                    </div>
+                </div>
+            </div>
 
-      <form method="POST" action="{{ url('/admin/quotes/'.$quote->id) }}"
-            onsubmit="return confirm('Silmek istediğine emin misin?');">
-        @csrf
-        @method('DELETE')
-        <button type="submit"
-                style="padding:10px 14px;border:0;border-radius:10px;background:#dc2626;color:#fff;font-weight:900;cursor:pointer;">
-          Sil
-        </button>
-      </form>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 border-b border-gray-200 bg-gray-50/50">
+                    <h3 class="font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa fa-align-left text-indigo-500"></i> Talep Detayları
+                    </h3>
+                </div>
+                <div class="p-6">
+                    <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 text-gray-700 leading-relaxed whitespace-pre-wrap">
+                        {{ $quote->details }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Sağ Kolon: Durum Yönetimi --}}
+        <div class="space-y-6">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 border-b border-gray-200 bg-gray-50/50">
+                    <h3 class="font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa fa-sync-alt text-indigo-500"></i> Durum Güncelle
+                    </h3>
+                </div>
+                <div class="p-6 text-center">
+                    @php
+                        $statusColors = [
+                            'new' => 'bg-blue-100 text-blue-700',
+                            'contacted' => 'bg-yellow-100 text-yellow-700',
+                            'closed' => 'bg-gray-100 text-gray-700'
+                        ];
+                        $statusLabels = [
+                            'new' => 'Yeni Talep',
+                            'contacted' => 'İletişime Geçildi',
+                            'closed' => 'Kapatıldı'
+                        ];
+                    @endphp
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $statusColors[$quote->status] ?? 'bg-gray-100 text-gray-700' }} mb-6">
+                        {{ $statusLabels[$quote->status] ?? $quote->status }}
+                    </span>
+
+                    <form method="POST" action="{{ url('/admin/quotes/'.$quote->id) }}" class="space-y-4 text-left">
+                        @csrf
+                        @method('PATCH')
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2">YENİ DURUM</label>
+                            <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                <option value="new" {{ $quote->status==='new' ? 'selected' : '' }}>Yeni</option>
+                                <option value="contacted" {{ $quote->status==='contacted' ? 'selected' : '' }}>İletişime Geçildi</option>
+                                <option value="closed" {{ $quote->status==='closed' ? 'selected' : '' }}>Kapatıldı</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="w-full px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition-all">
+                            Durumu Güncelle
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h4 class="font-bold text-gray-800 mb-4 flex items-center gap-2 text-sm">
+                    <i class="fa fa-lightbulb text-yellow-500"></i> Yönetici Notu
+                </h4>
+                <p class="text-xs text-gray-500 leading-relaxed italic">
+                    Bu talep üzerinden müşteriye doğrudan e-posta veya telefon ile ulaşarak süreci yönetebilirsiniz. Durumu güncellemeyi unutmayın.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
-
-  @if(session('success'))
-    <div style="background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:12px 14px;border-radius:10px;margin-bottom:14px;">
-      {{ session('success') }}
-    </div>
-  @endif
-
-  @if ($errors->any())
-    <div style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px 14px;border-radius:10px;margin-bottom:14px;">
-      <ul style="margin:0;padding-left:18px;">
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
-
-  <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:16px;">
-    {{-- Sol: içerik --}}
-    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;">
-      <h2 style="margin:0 0 12px;font-size:18px;font-weight:900;">İletişim</h2>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div>
-          <div style="font-size:12px;color:#6b7280;">Ad Soyad</div>
-          <div style="font-weight:900;color:#111827;">{{ $quote->full_name }}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:#6b7280;">Firma</div>
-          <div style="font-weight:900;color:#111827;">{{ $quote->company }}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:#6b7280;">Telefon</div>
-          <div style="font-weight:800;color:#111827;">{{ $quote->phone }}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:#6b7280;">E-posta</div>
-          <div style="font-weight:800;color:#111827;">{{ $quote->email }}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:#6b7280;">Şehir</div>
-          <div style="font-weight:800;color:#111827;">{{ $quote->city }}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:#6b7280;">Ürün</div>
-          <div style="font-weight:800;color:#111827;">{{ $quote->product }}</div>
-        </div>
-      </div>
-
-      <hr style="border:none;border-top:1px solid #e5e7eb;margin:14px 0;">
-
-      <h2 style="margin:0 0 10px;font-size:18px;font-weight:900;">Detay</h2>
-      <div style="white-space:pre-wrap;line-height:1.6;color:#111827;">
-        {{ $quote->details }}
-      </div>
-    </div>
-
-    {{-- Sağ: durum güncelle --}}
-    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;height:fit-content;">
-      <h2 style="margin:0 0 12px;font-size:18px;font-weight:900;">Durum</h2>
-
-      <div style="margin-bottom:10px;color:#6b7280;font-size:13px;">
-        Mevcut: <strong style="color:#111827;">{{ $quote->status }}</strong>
-      </div>
-
-      <form method="POST" action="{{ url('/admin/quotes/'.$quote->id) }}">
-        @csrf
-        @method('PATCH')
-
-        <label style="display:block;font-size:12px;color:#6b7280;margin-bottom:6px;">Yeni Durum</label>
-        <select name="status" style="width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;">
-          <option value="new" {{ $quote->status==='new' ? 'selected' : '' }}>new</option>
-          <option value="contacted" {{ $quote->status==='contacted' ? 'selected' : '' }}>contacted</option>
-          <option value="closed" {{ $quote->status==='closed' ? 'selected' : '' }}>closed</option>
-        </select>
-
-        <button type="submit"
-                style="margin-top:12px;width:100%;padding:10px 14px;border:0;border-radius:10px;background:#111827;color:#fff;font-weight:900;cursor:pointer;">
-          Kaydet
-        </button>
-      </form>
-
-      <hr style="border:none;border-top:1px solid #e5e7eb;margin:14px 0;">
-
-      <div style="font-size:12px;color:#6b7280;line-height:1.5;">
-        İpucu: status alanını enum gibi kullanmak istiyorsan migration’da enum veya
-        check constraint’e de çevirebilirsin.
-      </div>
-    </div>
-  </div>
 </div>
 @endsection

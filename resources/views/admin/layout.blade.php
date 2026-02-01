@@ -16,7 +16,7 @@
 <body class="h-full font-sans antialiased text-gray-900">
 
 <div class="min-h-full flex">
-    
+
     {{-- Sidebar (Desktop) --}}
     <aside class="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 bg-slate-900 text-white transition-all duration-300 z-30">
         {{-- Logo / Brand --}}
@@ -26,7 +26,7 @@
 
         {{-- Nav --}}
         <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto custom-scrollbar">
-            
+
             <p class="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">
                 Genel
             </p>
@@ -37,7 +37,7 @@
                     ['route' => 'admin.products3d.index', 'icon' => 'fa-cube', 'label' => '3D Ürünler'],
                     ['route' => 'admin.partner_logos.index', 'icon' => 'fa-handshake', 'label' => 'Referans Logoları'],
                 ];
-                
+
                 $incomingItems = [
                     ['url' => '/admin/quotes', 'icon' => 'fa-file-invoice-dollar', 'label' => 'Teklif Talepleri'],
                     ['route' => 'admin.supplier_applications.index', 'icon' => 'fa-truck', 'label' => 'Tedarikçi Başvuruları'],
@@ -54,7 +54,7 @@
                         $isActive = request()->is(trim($item['url'], '/').'*');
                     }
                 @endphp
-                
+
                 <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : ($item['url'] ?? '#') }}"
                    class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 group
                    {{ $isActive ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
@@ -78,7 +78,7 @@
                         $isActive = request()->is(trim($item['url'], '/').'*');
                     }
                 @endphp
-                
+
                 <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : ($item['url'] ?? '#') }}"
                    class="flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 group
                    {{ $isActive ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
@@ -90,12 +90,12 @@
         </nav>
 
         {{-- User Info (Bottom Sidebar) --}}
-      
+
     </aside>
 
     {{-- Main Content Wrapper --}}
     <div class="flex-1 flex flex-col lg:pl-72 min-h-screen transition-all duration-300">
-        
+
         {{-- Top Header --}}
         <header class="bg-white shadow-sm h-16 flex items-center justify-between px-6 sticky top-0 z-20 border-b border-gray-200">
             <div class="flex items-center gap-4">
@@ -108,10 +108,32 @@
             </div>
 
             <div class="flex items-center gap-4">
+                @auth
+                    <div class="flex items-center gap-3 mr-4 border-r pr-4 border-gray-200">
+                        <div class="bg-indigo-100 p-2 rounded-full">
+                            <i class="fa fa-user text-indigo-600"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500 font-medium">Hoş geldin,</span>
+                            <span class="text-sm font-bold text-gray-800">{{ auth()->user()->name }}</span>
+                        </div>
+                    </div>
+                @endauth
+
                 <a href="/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-indigo-600 flex items-center gap-2 transition-colors bg-gray-50 px-3 py-2 rounded-lg hover:bg-indigo-50">
-                    <i class="fa fa-external-link-alt"></i> 
+                    <i class="fa fa-external-link-alt"></i>
                     <span class="hidden sm:inline">Siteyi Görüntüle</span>
                 </a>
+
+                @auth
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="text-sm font-medium text-red-600 hover:text-red-700 flex items-center gap-2 transition-colors bg-red-50 px-3 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fa fa-sign-out-alt"></i>
+                            <span class="hidden sm:inline">Çıkış Yap</span>
+                        </button>
+                    </form>
+                @endauth
             </div>
         </header>
 

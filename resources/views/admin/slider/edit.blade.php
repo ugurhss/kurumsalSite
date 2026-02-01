@@ -1,12 +1,21 @@
 @extends('admin.layout')
 
-@section('content')
-<h1>Slide Düzenle</h1>
+@section('page-title', 'Slide Düzenle')
 
-<form method="POST"
-      action="{{ route('admin.slider.update', $item->id) }}"
-      enctype="multipart/form-data">
-    @method('PUT')
-    @include('admin.slider._form', ['item' => $item])
-</form>
+@section('content')
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
+        <h2 class="text-lg font-semibold text-gray-800">Slide Bilgilerini Güncelle</h2>
+        <a href="{{ route('admin.slider.index') }}" class="text-sm text-gray-500 hover:text-indigo-600 flex items-center gap-1 transition-colors">
+            <i class="fa fa-arrow-left"></i> Listeye Dön
+        </a>
+    </div>
+
+    <div class="p-6">
+        <form method="POST" action="{{ route('admin.slider.update', $item->id) }}" enctype="multipart/form-data" class="space-y-6">
+            @method('PUT')
+            @include('admin.slider._form', ['item' => $item])
+        </form>
+    </div>
+</div>
 @endsection
