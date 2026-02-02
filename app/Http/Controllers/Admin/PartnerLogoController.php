@@ -25,12 +25,12 @@ class PartnerLogoController extends Controller
     {
         $data = $request->validate([
             'name'      => ['required', 'string', 'max:255'],
-            'logo'      => ['required', 'file', 'max:4096'], // SVG/PNG/WEBP vs. (mime koymadım)
+            'logo'      => ['required', 'file', 'mimes:svg,png,jpg,jpeg,webp', 'max:4096'],
             'is_active' => ['nullable', 'boolean'],
         ]);
 
         $data['logo_path'] = $request->file('logo')->store('partner-logos', 'public');
-        $data['is_active'] = isset($data['is_active']);
+        $data['is_active'] = $request->boolean('is_active');
 
         unset($data['logo']);
 
@@ -54,7 +54,7 @@ class PartnerLogoController extends Controller
 
         $data = $request->validate([
             'name'      => ['required', 'string', 'max:255'],
-            'logo'      => ['nullable', 'file', 'max:4096'],
+            'logo'      => ['nullable', 'file', 'mimes:svg,png,jpg,jpeg,webp', 'max:4096'],
             'is_active' => ['nullable', 'boolean'],
         ]);
 
@@ -62,7 +62,7 @@ class PartnerLogoController extends Controller
             $data['logo_path'] = $request->file('logo')->store('partner-logos', 'public');
         }
 
-        $data['is_active'] = isset($data['is_active']);
+        $data['is_active'] = $request->boolean('is_active');
 
         unset($data['logo']);
 

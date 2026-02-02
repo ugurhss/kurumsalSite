@@ -54,7 +54,7 @@ class QuoteController extends Controller
     public function update(int $id, Request $request)
     {
         $validated = $request->validate([
-            'status' => ['required','string','max:30'],
+            'status' => ['required', 'string', 'in:new,contacted,closed'],
         ]);
 
         $updated = $this->quoteService->update($id, $validated);

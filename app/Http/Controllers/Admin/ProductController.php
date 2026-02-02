@@ -41,14 +41,14 @@ class ProductController extends Controller
 
         $data['is_active'] = $request->boolean('is_active');
 
-        unset($data['model'], $data['images_files']); // güvenlik amaçlı
+        unset($data['model']); // güvenlik/temizlik amaçlı
 
         $this->products->create($data);
 
         return redirect()->route('admin.products3d.index')->with('success', '3D ürün eklendi');
     }
 
- public function update(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $item = $this->products->get($id);
         abort_if(!$item, 404);
@@ -74,7 +74,7 @@ class ProductController extends Controller
 
         $data['is_active'] = $request->boolean('is_active');
 
-        unset($data['model'], $data['images_files']);
+        unset($data['model']);
 
         $this->products->update($id, $data);
 
@@ -99,15 +99,15 @@ class ProductController extends Controller
     }
 
 
-      private function validateData(Request $request, bool $isUpdate): array
+    private function validateData(Request $request, bool $isUpdate): array
     {
         return $request->validate([
             'title'             => ['required','string','max:255'],
             'short_description' => ['nullable','string','max:500'],
             'description'       => ['nullable','string'],
-            'model'             => [$isUpdate ? 'nullable' : 'required', 'file', 'max:51200'], // 50MB
-            'images'            => ['nullable'],
-            'images.*'          => ['file','max:8192'], // 8MB / görsel başına
+            'model'             => [$isUpdate ? 'nullable' : 'required', 'file', 'mimes:glb,gltf', 'max:51200'], // 50MB
+            'images'            => ['nullable', 'array'],
+            'images.*'          => ['image', 'max:8192'], // 8MB / görsel başına
             'specs'             => ['nullable','json'], // JSON textarea
             'price_note'        => ['nullable','string','max:255'],
             'quote_url'         => ['nullable','url','max:255'],

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PartnerLogoController;
@@ -10,45 +9,26 @@ use App\Http\Controllers\SupplierApplicationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 
-
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('about');
-
-});
+Route::view('/about', 'about')->name('about');
 Route::get('/reference', [FrontendController::class, 'reference'])->name('reference');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
 
 Route::get('/products3d/{id}', [FrontendController::class, 'show'])
     ->name('products3d.show');
 
-
-Route::view('/contact', 'contact');
-
-
 Route::get('/supplier', [FrontendController::class, 'supplierApply'])
     ->name('supplier.apply.create');
 
 Route::post('/supplier-applications', [SupplierApplicationController::class, 'store'])
-        ->name('supplier.apply.store');
+    ->name('supplier.apply.store');
 
-Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 Route::get('/quote', [FrontendController::class, 'quote'])->name('quote.create');
+Route::post('/quote', [QuoteController::class, 'store'])->name('quote.store');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact.create');
-
-
-
-
-
-
-
-
-
-
-
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

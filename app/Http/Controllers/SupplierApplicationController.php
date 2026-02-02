@@ -9,10 +9,9 @@ class SupplierApplicationController extends Controller
 {
     public function __construct(private SupplierApplicationService $service)
     {
-      
+    }
 
-        }
-            public function store(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'full_name' => ['required','string','max:120'],
