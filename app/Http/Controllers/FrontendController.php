@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product3D;
 use App\Services\SlideService;
 use App\Services\Product3DService;
 use App\Services\PartnerLogoService;
@@ -50,11 +51,12 @@ class FrontendController extends Controller
 }
 
 
- public function show(int $id)
+ public function show(string $slug)
     {
-        $product = $this->product3DService->get($id);
+        $product = Product3D::query()->where('slug', $slug)->first();
 
-        abort_if(!$product || !$product->is_active, 404);
+        abort_if(!$product, 404);
+        abort_if(!$product->is_active, 404);
 
         return view('productsDetail', compact('product'));
     }

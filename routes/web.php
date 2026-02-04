@@ -15,7 +15,7 @@ Route::view('/about', 'about')->name('about');
 Route::get('/reference', [FrontendController::class, 'reference'])->name('reference');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
 
-Route::get('/products3d/{id}', [FrontendController::class, 'show'])
+Route::get('/products3d/{slug}', [FrontendController::class, 'show'])
     ->name('products3d.show');
 
 Route::get('/supplier', [FrontendController::class, 'supplierApply'])

@@ -66,7 +66,7 @@
       <p>{{ $product->description }}</p>
     @endif -->
 
-<a class="btn btn-outline" href="{{ route('products3d.show', $product->id) }}">Detay</a>
+<a class="btn btn-outline" href="{{ route('products3d.show', $product->slug) }}">Detay</a>
 
   </article>
   @endforeach
