@@ -33,5 +33,5 @@ Bu projede testleri **Pest** ile yazıyoruz. İki ana klasör var:
 ## Notlar
 
 - Feature testlerinde `tests/Pest.php` üzerinden `RefreshDatabase` aktif; test DB’si varsayılan olarak `sqlite :memory:` çalışır (`phpunit.xml`).
-- Web route’larına `POST` atarken CSRF yüzünden 419 almamak için testte `withoutMiddleware(VerifyCsrfToken::class)` kullanımı örneklendi.
+- Web route’larına `POST` atarken CSRF yüzünden 419 almamak için testte `withoutMiddleware(VerifyCsrfToken::class)` unutma
 
