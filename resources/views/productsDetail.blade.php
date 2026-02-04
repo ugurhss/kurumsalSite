@@ -88,15 +88,7 @@
 
        <div class="product-carousel">
   @php
-    // images alanı array / json olabilir
-    $raw = $product->images ?? [];
-
-    if (is_string($raw)) {
-        $raw = json_decode($raw, true) ?: [];
-    }
-
-    $imgs = is_array($raw) ? $raw : [];
-
+    $imgs = $product->images_urls ?? [];
     $main = $imgs[0] ?? null;
 
     $fallbacks = [
@@ -109,17 +101,17 @@
 
   <div class="carousel-main">
     <img id="mainImage"
-         src="{{ $main ? asset('storage/'.$main) : $fallbacks[0] }}"
+         src="{{ $main ?: $fallbacks[0] }}"
          alt="{{ $product->title ?? 'Ürün' }}">
   </div>
 
   <div class="carousel-thumbs">
     @if(!empty($imgs))
-      @foreach($imgs as $i => $img)
+      @foreach($imgs as $i => $url)
         <img class="thumb {{ $i === 0 ? 'active' : '' }}"
-             src="{{ asset('storage/'.$img) }}"
+             src="{{ $url }}"
              alt="{{ $product->title ?? 'Ürün' }} - Görsel {{ $i + 1 }}"
-             data-full="{{ asset('storage/'.$img) }}">
+             data-full="{{ $url }}">
       @endforeach
     @else
       @foreach($fallbacks as $i => $fb)

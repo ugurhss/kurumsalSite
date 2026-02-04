@@ -32,9 +32,7 @@ class Product3D extends Model
    
     public function getModelUrlAttribute(): ?string
     {
-        return $this->model_path
-            ? Storage::disk('public')->url($this->model_path)
-            : null;
+        return $this->publicUrlForPath($this->model_path);
     }
 
     public function getImagesUrlsAttribute(): array
@@ -44,7 +42,8 @@ class Product3D extends Model
         }
 
         return collect($this->images)
-            ->map(fn ($path) => Storage::disk('public')->url($path))
+            ->map(fn ($path) => $this->publicUrlForPath($path))
+            ->filter()
             ->values()
             ->toArray();
     }
@@ -63,5 +62,24 @@ class Product3D extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
+    }
+
+    private function publicUrlForPath(?string $path): ?string
+    {
+        if (empty($path) || !is_string($path)) {
+            return null;
+        }
+
+        if (Str::startsWith($path, ['http://', 'https://'])) {
+            return $path;
+        }
+
+        $normalized = ltrim($path, '/');
+
+        if (Str::startsWith($normalized, 'assets/')) {
+            return asset($normalized);
+        }
+
+        return Storage::disk('public')->url($normalized);
     }
 }

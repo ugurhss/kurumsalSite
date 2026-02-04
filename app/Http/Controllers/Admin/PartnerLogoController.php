@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\PartnerLogoService;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class PartnerLogoController extends Controller
 {
@@ -29,7 +32,7 @@ class PartnerLogoController extends Controller
             'is_active' => ['nullable', 'boolean'],
         ]);
 
-        $data['logo_path'] = $request->file('logo')->store('partner-logos', 'public');
+        $data['logo_path'] = $this->moveToPublicAssets($request->file('logo'), 'assets/partner-logos');
         $data['is_active'] = $request->boolean('is_active');
 
         unset($data['logo']);
@@ -59,7 +62,12 @@ class PartnerLogoController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $data['logo_path'] = $request->file('logo')->store('partner-logos', 'public');
+            $oldPath = $item->logo_path;
+            $data['logo_path'] = $this->moveToPublicAssets($request->file('logo'), 'assets/partner-logos');
+
+            if (!empty($oldPath)) {
+                $this->deleteLogoFile($oldPath);
+            }
         }
 
         $data['is_active'] = $request->boolean('is_active');
@@ -73,8 +81,51 @@ class PartnerLogoController extends Controller
 
     public function destroy(int $id)
     {
+        $item = $this->logos->get($id);
+        if ($item?->logo_path) {
+            $this->deleteLogoFile($item->logo_path);
+        }
+
         $this->logos->delete($id);
 
         return redirect()->route('admin.partner_logos.index')->with('success', 'Logo silindi');
+    }
+
+    private function moveToPublicAssets(UploadedFile $file, string $subDir): string
+    {
+        $destinationPath = public_path($subDir);
+
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true);
+        }
+
+        $baseName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = strtolower($file->getClientOriginalExtension() ?: 'bin');
+
+        $filename =
+            now()->format('YmdHis')
+            . '-' . Str::slug($baseName)
+            . '-' . strtolower(Str::random(6))
+            . '.' . $extension;
+
+        $file->move($destinationPath, $filename);
+
+        return trim($subDir, '/') . '/' . $filename;
+    }
+
+    private function deleteLogoFile(string $path): void
+    {
+        $normalized = ltrim($path, '/');
+
+        if (str_starts_with($normalized, 'assets/')) {
+            $fullPath = public_path($normalized);
+        } else {
+            // eski kayıtlar: storage/app/public altında olabilir
+            $fullPath = storage_path('app/public/' . $normalized);
+        }
+
+        if (File::exists($fullPath)) {
+            File::delete($fullPath);
+        }
     }
 }

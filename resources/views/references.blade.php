@@ -53,7 +53,7 @@
       @foreach($logos as $logo)
         <div class="logo-card">
           <img class="logo-img"
-               src="{{ asset('storage/'.$logo->logo_path) }}"
+               src="{{ $logo->logo_url }}"
                alt="{{ $logo->name }} Logo">
         </div>
       @endforeach

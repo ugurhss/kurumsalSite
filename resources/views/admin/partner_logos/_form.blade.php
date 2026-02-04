@@ -27,7 +27,7 @@
         @if(!empty($item?->logo_path))
             <div class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm inline-block">
                 <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Mevcut Logo</p>
-                <img src="{{ asset('storage/'.$item->logo_path) }}"
+                <img src="{{ $item->logo_url }}"
                      alt="{{ $item->name ?? 'Logo' }}"
                      class="max-h-16 object-contain bg-gray-50 p-2 rounded border border-gray-100">
                 <p class="mt-2 text-[10px] text-gray-400 truncate max-w-[200px]">{{ $item->logo_path }}</p>

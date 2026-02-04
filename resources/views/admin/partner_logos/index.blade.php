@@ -38,7 +38,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-center">
                             @if(!empty($item->logo_path))
                                 <div class="h-12 w-32 mx-auto flex items-center justify-center bg-gray-50 rounded border border-gray-200 p-1">
-                                    <img src="{{ asset('storage/'.$item->logo_path) }}" 
+                                    <img src="{{ $item->logo_url }}" 
                                          alt="{{ $item->name }}" 
                                          class="max-h-full max-w-full object-contain">
                                 </div>

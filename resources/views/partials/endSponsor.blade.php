@@ -23,13 +23,13 @@
 
     <div class="logo-marquee-group">
       @foreach($logos as $logo)
-      <div class="logo-marquee-item"><img src="{{ asset('storage/'.$logo->logo_path) }}" alt="{{ $logo->name }} Logo"></div>
+      <div class="logo-marquee-item"><img src="{{ $logo->logo_url }}" alt="{{ $logo->name }} Logo"></div>
       @endforeach
     </div>
 
     <div class="logo-marquee-group">
       @foreach($logos as $logo)
-      <div class="logo-marquee-item"><img src="{{ asset('storage/'.$logo->logo_path) }}" alt="{{ $logo->name }} Logo"></div>
+      <div class="logo-marquee-item"><img src="{{ $logo->logo_url }}" alt="{{ $logo->name }} Logo"></div>
       @endforeach
     </div>
 

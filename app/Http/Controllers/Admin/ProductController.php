@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\Product3DService;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -32,7 +35,7 @@ class ProductController extends Controller
         $data['images'] = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $img) {
-                $data['images'][] = $img->store('products3d/images', 'public');
+                $data['images'][] = $this->moveToPublicAssets($img, 'assets/products3d/images');
             }
         }
 
@@ -64,7 +67,7 @@ class ProductController extends Controller
         $images = is_array($item->images) ? $item->images : [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $img) {
-                $images[] = $img->store('products3d/images', 'public');
+                $images[] = $this->moveToPublicAssets($img, 'assets/products3d/images');
             }
         }
         $data['images'] = $images;
@@ -129,5 +132,27 @@ class ProductController extends Controller
         }
 
         return $decoded;
+    }
+
+    private function moveToPublicAssets(UploadedFile $file, string $subDir): string
+    {
+        $destinationPath = public_path($subDir);
+
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true);
+        }
+
+        $baseName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = strtolower($file->getClientOriginalExtension() ?: 'bin');
+
+        $filename =
+            now()->format('YmdHis')
+            . '-' . Str::slug($baseName)
+            . '-' . strtolower(Str::random(6))
+            . '.' . $extension;
+
+        $file->move($destinationPath, $filename);
+
+        return trim($subDir, '/') . '/' . $filename;
     }
 }
