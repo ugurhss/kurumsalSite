@@ -28,8 +28,8 @@ class ProductController extends Controller
     {
         $data = $this->validateData($request, isUpdate: false);
 
-        // GLB dosyası (zorunlu)
-        $data['model_path'] = $request->file('model')->store('models3d', 'public');
+        // 3D model dosyası (zorunlu)
+        $data['model_path'] = $this->moveToPublicAssets($request->file('model'), 'assets/products3d/models');
 
         // Çoklu görseller (opsiyonel)
         $data['images'] = [];
@@ -58,9 +58,14 @@ class ProductController extends Controller
 
         $data = $this->validateData($request, isUpdate: true);
 
-        // GLB yenilenirse
+        // 3D model yenilenirse
         if ($request->hasFile('model')) {
-            $data['model_path'] = $request->file('model')->store('models3d', 'public');
+            $oldPath = $item->model_path;
+            $data['model_path'] = $this->moveToPublicAssets($request->file('model'), 'assets/products3d/models');
+
+            if (!empty($oldPath)) {
+                $this->deleteProductFile($oldPath);
+            }
         }
 
         // Yeni görseller eklenirse: mevcut images üzerine ekle
@@ -96,6 +101,20 @@ class ProductController extends Controller
 
     public function destroy(int $id)
     {
+        $item = $this->products->get($id);
+        if ($item) {
+            if (!empty($item->model_path)) {
+                $this->deleteProductFile($item->model_path);
+            }
+
+            $images = is_array($item->images) ? $item->images : [];
+            foreach ($images as $path) {
+                if (is_string($path) && $path !== '') {
+                    $this->deleteProductFile($path);
+                }
+            }
+        }
+
         $this->products->delete($id);
 
         return redirect()->route('admin.products3d.index')->with('success', '3D ürün silindi');
@@ -108,7 +127,21 @@ class ProductController extends Controller
             'title'             => ['required','string','max:255'],
             'short_description' => ['nullable','string','max:500'],
             'description'       => ['nullable','string'],
-            'model'             => [$isUpdate ? 'nullable' : 'required', 'file', 'mimes:glb,gltf', 'max:51200'], // 50MB
+            'model'             => [
+                $isUpdate ? 'nullable' : 'required',
+                'file',
+                'max:51200', // 50MB
+                function (string $attribute, mixed $value, \Closure $fail) {
+                    if (!$value instanceof UploadedFile) {
+                        return;
+                    }
+
+                    $ext = strtolower($value->getClientOriginalExtension() ?? '');
+                    if (!in_array($ext, ['glb', 'gltf'], true)) {
+                        $fail('3D model dosyası .glb veya .gltf olmalıdır.');
+                    }
+                },
+            ],
             'images'            => ['nullable', 'array'],
             'images.*'          => ['image', 'max:8192'], // 8MB / görsel başına
             'specs'             => ['nullable','json'], // JSON textarea
@@ -154,5 +187,21 @@ class ProductController extends Controller
         $file->move($destinationPath, $filename);
 
         return trim($subDir, '/') . '/' . $filename;
+    }
+
+    private function deleteProductFile(string $path): void
+    {
+        $normalized = ltrim($path, '/');
+
+        if (str_starts_with($normalized, 'assets/')) {
+            $fullPath = public_path($normalized);
+        } else {
+            // eski kayıtlar: storage/app/public altında olabilir
+            $fullPath = storage_path('app/public/' . $normalized);
+        }
+
+        if (File::exists($fullPath)) {
+            File::delete($fullPath);
+        }
     }
 }

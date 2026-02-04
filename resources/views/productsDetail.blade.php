@@ -77,7 +77,7 @@
         @if(!empty($product->model_url))
           <div style="margin-bottom:14px;">
             <model-viewer
-              src="{{ asset('storage/'.$product->model_path) }}"
+              src="{{ $product->model_url }}"
               shadow-intensity="0.4"
               camera-controls
               auto-rotate

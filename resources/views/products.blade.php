@@ -52,7 +52,7 @@
 
     <div class="product-img" style="padding:0; background:transparent;">
       <model-viewer
-        src="{{ asset('storage/'.$product->model_path) }}"
+        src="{{ $product->model_url }}"
         shadow-intensity="0.4"
         camera-controls
         auto-rotate

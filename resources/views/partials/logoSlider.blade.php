@@ -21,7 +21,7 @@
 
     <div class="product-overflow">
       <div class="product-model">
-        <model-viewer src="{{ asset('storage/'.$product->model_path) }}"
+        <model-viewer src="{{ $product->model_url }}"
                       shadow-intensity="0.4"></model-viewer>
                       
       </div>

@@ -42,7 +42,7 @@
                             @if($item->model_path)
                                 <div class="h-32 w-40 mx-auto bg-gray-100 rounded border border-gray-200 overflow-hidden">
                                     <model-viewer
-                                        src="{{ asset('storage/'.$item->model_path) }}"
+                                        src="{{ $item->model_url }}"
                                         class="w-full h-full"
                                         camera-controls
                                         auto-rotate

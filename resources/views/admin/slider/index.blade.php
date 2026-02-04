@@ -33,8 +33,8 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @forelse($items as $item)
                     @php
-                        $leftSrc  = !empty($item->image_left_path)  ? asset('storage/'.$item->image_left_path)  : null;
-                        $rightSrc = !empty($item->image_right_path) ? asset('storage/'.$item->image_right_path) : null;
+                        $leftSrc  = $item->image_left_url ?? null;
+                        $rightSrc = $item->image_right_url ?? null;
                     @endphp
 
                     <tr class="hover:bg-gray-50 transition-colors">

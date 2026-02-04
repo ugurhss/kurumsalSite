@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Slide extends Model
 {
@@ -24,15 +25,30 @@ class Slide extends Model
 
     public function getImageLeftUrlAttribute(): ?string
     {
-        return $this->image_left_path
-            ? Storage::disk('public')->url($this->image_left_path)
-            : null;
+        return $this->publicUrlForPath($this->image_left_path);
     }
 
     public function getImageRightUrlAttribute(): ?string
     {
-        return $this->image_right_path
-            ? Storage::disk('public')->url($this->image_right_path)
-            : null;
+        return $this->publicUrlForPath($this->image_right_path);
+    }
+
+    private function publicUrlForPath(?string $path): ?string
+    {
+        if (empty($path) || !is_string($path)) {
+            return null;
+        }
+
+        if (Str::startsWith($path, ['http://', 'https://'])) {
+            return $path;
+        }
+
+        $normalized = ltrim($path, '/');
+
+        if (Str::startsWith($normalized, 'assets/')) {
+            return asset($normalized);
+        }
+
+        return Storage::disk('public')->url($normalized);
     }
 }
