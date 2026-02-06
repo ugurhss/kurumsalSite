@@ -47,29 +47,43 @@
 
   <div class="products-grid" aria-live="polite">
 
-  @foreach($products3d as $product)
-  <article class="product-tile">
+	  @foreach($products3d as $product)
+	  <article class="product-tile">
 
-    <div class="product-img" style="padding:0; background:transparent;">
-      <model-viewer
-        src="{{ $product->model_url }}"
-        shadow-intensity="0.4"
-        camera-controls
-        auto-rotate
-        style="width:100%; height:260px; display:block;">
-      </model-viewer>
-    </div>
+	    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px;">
+	      @if(!empty($product->slug))
+	        <h3 style="margin:0;">
+	          <a href="{{ route('products3d.show', ['slug' => $product->slug]) }}" style="color:inherit; text-decoration:none;">
+	            {{ $product->title ?? '3D Ürün' }}
+	          </a>
+	        </h3>
+	      @else
+	        <h3 style="margin:0;">{{ $product->title ?? '3D Ürün' }}</h3>
+	      @endif
 
-    <h3>{{ $product->title ?? '3D Ürün' }}</h3>
+	      @if(!empty($product->slug))
+	        <a class="btn btn-outline" href="{{ route('products3d.show', ['slug' => $product->slug]) }}">Detay</a>
+	      @else
+	        <span class="btn btn-outline" style="opacity:.5; cursor:not-allowed; white-space:nowrap;" aria-disabled="true" title="Bu ürün için detay sayfası henüz hazır değil.">Detay</span>
+	      @endif
+	    </div>
+
+	    <div class="product-img" style="padding:0; background:transparent;">
+	      <model-viewer
+	        src="{{ $product->model_url }}"
+	        shadow-intensity="0.4"
+	        camera-controls
+	        auto-rotate
+	        style="width:100%; height:260px; display:block;">
+	      </model-viewer>
+	    </div>
 
     <!-- @if(!empty($product->description))
       <p>{{ $product->description }}</p>
     @endif -->
 
-<a class="btn btn-outline" href="{{ route('products3d.show', $product->slug) }}">Detay</a>
-
-  </article>
-  @endforeach
+	  </article>
+	  @endforeach
 
 </div>
 

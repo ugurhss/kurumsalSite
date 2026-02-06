@@ -11,7 +11,7 @@
         </div>
 
         <h1 class="title">
-          <span class="title-text">{{ $slide->title }}</span>
+          <!-- <span class="title-text">{{ $slide->title }}</span> -->
         </h1>
       </li>
     @endforeach

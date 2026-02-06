@@ -3,7 +3,7 @@
     <!-- Left: Logo -->
     <div class="nav-left">
       <a href="/" class="navbar-logo">
-        <img src="{{ asset('images/logo.jpg') }}" alt="Göksu Kağıt Logo" class="logo-img">
+        <img src="{{ asset('images/logo.jpg') }}" alt=" Kağıt Logo" class="logo-img">
       </a>
     </div>
 

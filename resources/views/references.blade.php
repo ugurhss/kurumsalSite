@@ -42,7 +42,7 @@
 <section class="references-section">
   <div class="references-container">
     <h2>Global Müşterilerimiz</h2>
-    <p class="references-subtitle">Göksu Kağıt'ın kalitesine ve güvenilirliğine güvenen uluslararası markalar</p>
+    <p class="references-subtitle"> Kağıt'ın kalitesine ve güvenilirliğine güvenen uluslararası markalar</p>
   </div>
 
   <!-- Logos Grid (sequential list) -->

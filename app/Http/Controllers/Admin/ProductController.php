@@ -28,6 +28,9 @@ class ProductController extends Controller
     {
         $data = $this->validateData($request, isUpdate: false);
 
+        // Benzersiz slug üret (DB unique constraint çakışmasın)
+        $data['slug'] = $this->generateUniqueSlug($data['title']);
+
         // 3D model dosyası (zorunlu)
         $data['model_path'] = $this->moveToPublicAssets($request->file('model'), 'assets/products3d/models');
 
@@ -57,6 +60,11 @@ class ProductController extends Controller
         abort_if(!$item, 404);
 
         $data = $this->validateData($request, isUpdate: true);
+
+        // Slug boşsa (eski kayıtlar gibi), benzersiz slug üret
+        if (empty($item->slug)) {
+            $data['slug'] = $this->generateUniqueSlug($data['title'], ignoreId: $id);
+        }
 
         // 3D model yenilenirse
         if ($request->hasFile('model')) {
@@ -203,5 +211,34 @@ class ProductController extends Controller
         if (File::exists($fullPath)) {
             File::delete($fullPath);
         }
+    }
+
+    private function generateUniqueSlug(string $title, ?int $ignoreId = null): string
+    {
+        $base = Str::slug($title);
+        if ($base === '') {
+            $base = 'product';
+        }
+
+        $slug = $base;
+        $suffix = 2;
+
+        while ($this->slugExists($slug, $ignoreId)) {
+            $slug = $base . '-' . $suffix;
+            $suffix++;
+        }
+
+        return $slug;
+    }
+
+    private function slugExists(string $slug, ?int $ignoreId = null): bool
+    {
+        $query = \App\Models\Product3D::query()->where('slug', $slug);
+
+        if ($ignoreId !== null) {
+            $query->where('id', '!=', $ignoreId);
+        }
+
+        return $query->exists();
     }
 }

@@ -4,7 +4,7 @@
       <!-- Company Info -->
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="{{ asset('images/logo.jpg') }}" alt="Göksu Kağıt" class="logo-footer">
+          <img src="{{ asset('images/logo.jpg') }}" alt=" Kağıt" class="logo-footer">
          
         </div>
         <p>Avrupa'nın en büyük ıslak mendil üreticisi. 2017'den beri kalite ve güvenilirliğin sembolü.</p>
